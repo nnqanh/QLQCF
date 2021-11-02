@@ -21,5 +21,10 @@ namespace QLQCF
         {
 
         }
+
+        private void txbDangnhap_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
