@@ -37,9 +37,10 @@
             // 
             // btnDangnhap
             // 
-            this.btnDangnhap.Location = new System.Drawing.Point(194, 325);
+            this.btnDangnhap.Location = new System.Drawing.Point(258, 265);
+            this.btnDangnhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDangnhap.Name = "btnDangnhap";
-            this.btnDangnhap.Size = new System.Drawing.Size(110, 43);
+            this.btnDangnhap.Size = new System.Drawing.Size(82, 35);
             this.btnDangnhap.TabIndex = 0;
             this.btnDangnhap.Text = "Đăng nhập";
             this.btnDangnhap.UseVisualStyleBackColor = true;
@@ -47,42 +48,46 @@
             // 
             // txbDangnhap
             // 
-            this.txbDangnhap.Location = new System.Drawing.Point(154, 197);
+            this.txbDangnhap.Location = new System.Drawing.Point(116, 160);
+            this.txbDangnhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbDangnhap.Name = "txbDangnhap";
-            this.txbDangnhap.Size = new System.Drawing.Size(297, 22);
+            this.txbDangnhap.Size = new System.Drawing.Size(224, 20);
             this.txbDangnhap.TabIndex = 1;
             // 
             // lbDangnhap
             // 
             this.lbDangnhap.AutoSize = true;
-            this.lbDangnhap.Location = new System.Drawing.Point(31, 200);
+            this.lbDangnhap.Location = new System.Drawing.Point(23, 162);
+            this.lbDangnhap.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDangnhap.Name = "lbDangnhap";
-            this.lbDangnhap.Size = new System.Drawing.Size(101, 16);
+            this.lbDangnhap.Size = new System.Drawing.Size(84, 13);
             this.lbDangnhap.TabIndex = 2;
             this.lbDangnhap.Text = "Tên đăng nhập:";
             // 
             // lbMatkhau
             // 
             this.lbMatkhau.AutoSize = true;
-            this.lbMatkhau.Location = new System.Drawing.Point(31, 262);
+            this.lbMatkhau.Location = new System.Drawing.Point(23, 213);
+            this.lbMatkhau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMatkhau.Name = "lbMatkhau";
-            this.lbMatkhau.Size = new System.Drawing.Size(64, 16);
+            this.lbMatkhau.Size = new System.Drawing.Size(55, 13);
             this.lbMatkhau.TabIndex = 3;
             this.lbMatkhau.Text = "Mật khẩu:";
             // 
             // txbMatkhau
             // 
-            this.txbMatkhau.Location = new System.Drawing.Point(154, 255);
+            this.txbMatkhau.Location = new System.Drawing.Point(116, 207);
+            this.txbMatkhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbMatkhau.Name = "txbMatkhau";
-            this.txbMatkhau.Size = new System.Drawing.Size(297, 22);
+            this.txbMatkhau.Size = new System.Drawing.Size(224, 20);
             this.txbMatkhau.TabIndex = 4;
             // 
             // FDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(500, 447);
+            this.ClientSize = new System.Drawing.Size(375, 363);
             this.ControlBox = false;
             this.Controls.Add(this.txbMatkhau);
             this.Controls.Add(this.lbMatkhau);
@@ -90,6 +95,7 @@
             this.Controls.Add(this.txbDangnhap);
             this.Controls.Add(this.btnDangnhap);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FDangNhap";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
