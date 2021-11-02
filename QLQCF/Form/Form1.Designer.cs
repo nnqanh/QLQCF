@@ -86,8 +86,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(375, 363);
+=======
+            this.ClientSize = new System.Drawing.Size(500, 447);
+>>>>>>> parent of ad7d983 (design)
             this.ControlBox = false;
             this.Controls.Add(this.txbMatkhau);
             this.Controls.Add(this.lbMatkhau);
