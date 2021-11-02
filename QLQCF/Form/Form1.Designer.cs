@@ -37,13 +37,8 @@
             // 
             // btnDangnhap
             // 
-<<<<<<< Updated upstream
             this.btnDangnhap.Location = new System.Drawing.Point(146, 264);
             this.btnDangnhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-=======
-            this.btnDangnhap.Location = new System.Drawing.Point(116, 262);
-            this.btnDangnhap.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> Stashed changes
             this.btnDangnhap.Name = "btnDangnhap";
             this.btnDangnhap.Size = new System.Drawing.Size(82, 35);
             this.btnDangnhap.TabIndex = 0;
@@ -53,13 +48,8 @@
             // 
             // txbDangnhap
             // 
-<<<<<<< Updated upstream
             this.txbDangnhap.Location = new System.Drawing.Point(116, 80);
             this.txbDangnhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-=======
-            this.txbDangnhap.Location = new System.Drawing.Point(116, 160);
-            this.txbDangnhap.Margin = new System.Windows.Forms.Padding(2);
->>>>>>> Stashed changes
             this.txbDangnhap.Name = "txbDangnhap";
             this.txbDangnhap.Size = new System.Drawing.Size(224, 20);
             this.txbDangnhap.TabIndex = 1;
@@ -88,7 +78,7 @@
             // txbMatkhau
             // 
             this.txbMatkhau.Location = new System.Drawing.Point(116, 207);
-            this.txbMatkhau.Margin = new System.Windows.Forms.Padding(2);
+            this.txbMatkhau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbMatkhau.Name = "txbMatkhau";
             this.txbMatkhau.Size = new System.Drawing.Size(224, 20);
             this.txbMatkhau.TabIndex = 4;
@@ -105,7 +95,7 @@
             this.Controls.Add(this.txbDangnhap);
             this.Controls.Add(this.btnDangnhap);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FDangNhap";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
