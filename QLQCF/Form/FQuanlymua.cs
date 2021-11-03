@@ -10,16 +10,19 @@ using System.Windows.Forms;
 
 namespace QLQCF
 {
-    public partial class FDangNhap : Form
+    public partial class FQuanly : Form
     {
-        public FDangNhap()
+        public FQuanly()
         {
             InitializeComponent();
         }
 
-        private void btnDangnhap_Click(object sender, EventArgs e)
+        private void lbExit_Click(object sender, EventArgs e)
         {
-
+            FChinh f = new FChinh();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
         }
     }
 }
