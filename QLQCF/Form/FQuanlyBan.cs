@@ -19,7 +19,9 @@ namespace QLQCF
         {
             InitializeComponent();
 
-            LoadAccountList();
+            //LoadAccountList();
+
+            //LoadMonList();
         }
 
         private void lbExit_Click(object sender, EventArgs e)
@@ -30,13 +32,18 @@ namespace QLQCF
             this.Show();
         }
 
+        /*void LoadMonList()
+        {
+            string query = "select * from Mon";
+
+            dtgvMon.DataSource = DataProvider.Instance.ExecuteQuery(query);
+        }
+
         void LoadAccountList()
         {
-            string query = "Select * from Account";
+            string query = "Exec dbo.spGetAccountByUserName @userName";
 
-            DataProvider provider = new DataProvider();
-
-            dtgvTK.DataSource = provider.ExecuteQuery(query);
-        }
+            dtgvTK.DataSource = DataProvider.Instance.ExecuteQuery(query, new object[]{"PTTHa2201"});
+        }*/
     }
 }
