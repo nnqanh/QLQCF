@@ -48,10 +48,10 @@
             this.btnDangnhap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDangnhap.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangnhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangnhap.Location = new System.Drawing.Point(206, 334);
-            this.btnDangnhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDangnhap.Location = new System.Drawing.Point(154, 271);
+            this.btnDangnhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangnhap.Name = "btnDangnhap";
-            this.btnDangnhap.Size = new System.Drawing.Size(109, 43);
+            this.btnDangnhap.Size = new System.Drawing.Size(82, 35);
             this.btnDangnhap.TabIndex = 2;
             this.btnDangnhap.Text = "Sign in";
             this.btnDangnhap.UseVisualStyleBackColor = false;
@@ -65,11 +65,12 @@
             this.txbDangnhap.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbDangnhap.ForeColor = System.Drawing.Color.Black;
             this.txbDangnhap.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txbDangnhap.Location = new System.Drawing.Point(155, 214);
-            this.txbDangnhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbDangnhap.Location = new System.Drawing.Point(116, 174);
+            this.txbDangnhap.Margin = new System.Windows.Forms.Padding(2);
             this.txbDangnhap.Name = "txbDangnhap";
-            this.txbDangnhap.Size = new System.Drawing.Size(309, 18);
+            this.txbDangnhap.Size = new System.Drawing.Size(232, 14);
             this.txbDangnhap.TabIndex = 0;
+            this.txbDangnhap.Text = "PTTHa2201";
             // 
             // lbDangnhap
             // 
@@ -77,9 +78,10 @@
             this.lbDangnhap.BackColor = System.Drawing.Color.Transparent;
             this.lbDangnhap.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDangnhap.ForeColor = System.Drawing.Color.Gray;
-            this.lbDangnhap.Location = new System.Drawing.Point(41, 217);
+            this.lbDangnhap.Location = new System.Drawing.Point(31, 176);
+            this.lbDangnhap.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDangnhap.Name = "lbDangnhap";
-            this.lbDangnhap.Size = new System.Drawing.Size(79, 16);
+            this.lbDangnhap.Size = new System.Drawing.Size(65, 14);
             this.lbDangnhap.TabIndex = 2;
             this.lbDangnhap.Text = "USERNAME";
             // 
@@ -89,9 +91,10 @@
             this.lbMatkhau.BackColor = System.Drawing.Color.Transparent;
             this.lbMatkhau.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMatkhau.ForeColor = System.Drawing.Color.Gray;
-            this.lbMatkhau.Location = new System.Drawing.Point(41, 277);
+            this.lbMatkhau.Location = new System.Drawing.Point(31, 225);
+            this.lbMatkhau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbMatkhau.Name = "lbMatkhau";
-            this.lbMatkhau.Size = new System.Drawing.Size(83, 16);
+            this.lbMatkhau.Size = new System.Drawing.Size(67, 14);
             this.lbMatkhau.TabIndex = 3;
             this.lbMatkhau.Text = "PASSWORD";
             // 
@@ -100,12 +103,14 @@
             this.txbMatkhau.BackColor = System.Drawing.Color.LavenderBlush;
             this.txbMatkhau.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbMatkhau.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbMatkhau.Location = new System.Drawing.Point(155, 278);
-            this.txbMatkhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbMatkhau.Location = new System.Drawing.Point(116, 226);
+            this.txbMatkhau.Margin = new System.Windows.Forms.Padding(2);
             this.txbMatkhau.Name = "txbMatkhau";
-            this.txbMatkhau.Size = new System.Drawing.Size(309, 18);
+            this.txbMatkhau.Size = new System.Drawing.Size(232, 14);
             this.txbMatkhau.TabIndex = 1;
+            this.txbMatkhau.Text = "22012001";
             this.txbMatkhau.UseSystemPasswordChar = true;
+            this.txbMatkhau.TextChanged += new System.EventHandler(this.txbMatkhau_TextChanged);
             // 
             // btnThoat
             // 
@@ -113,10 +118,11 @@
             this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThoat.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnThoat.Location = new System.Drawing.Point(224, 382);
+            this.btnThoat.Location = new System.Drawing.Point(168, 310);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.Size = new System.Drawing.Size(56, 19);
             this.btnThoat.TabIndex = 3;
             this.btnThoat.Text = "Cancel";
             this.btnThoat.UseVisualStyleBackColor = false;
@@ -128,9 +134,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(157, 92);
+            this.label1.Location = new System.Drawing.Point(118, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(224, 41);
+            this.label1.Size = new System.Drawing.Size(179, 35);
             this.label1.TabIndex = 6;
             this.label1.Text = "Welcome back";
             // 
@@ -140,9 +147,10 @@
             this.llbgach.BackColor = System.Drawing.Color.Transparent;
             this.llbgach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llbgach.ForeColor = System.Drawing.Color.PaleVioletRed;
-            this.llbgach.Location = new System.Drawing.Point(151, 214);
+            this.llbgach.Location = new System.Drawing.Point(113, 174);
+            this.llbgach.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.llbgach.Name = "llbgach";
-            this.llbgach.Size = new System.Drawing.Size(270, 20);
+            this.llbgach.Size = new System.Drawing.Size(240, 17);
             this.llbgach.TabIndex = 7;
             this.llbgach.Text = "_____________________________";
             // 
@@ -152,21 +160,22 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.PaleVioletRed;
-            this.label2.Location = new System.Drawing.Point(151, 278);
+            this.label2.Location = new System.Drawing.Point(113, 226);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(270, 20);
+            this.label2.Size = new System.Drawing.Size(240, 17);
             this.label2.TabIndex = 8;
             this.label2.Text = "_____________________________";
             // 
             // FDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(920, 520);
+            this.ClientSize = new System.Drawing.Size(690, 422);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnThoat);
@@ -180,7 +189,7 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FDangNhap";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
