@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\DAO_Account.cs" />
+    <Compile Include="DAO\DAO_Bill.cs" />
+    <Compile Include="DAO\DAO_BillInfo.cs" />
+    <Compile Include="DAO\DAO_DatChiTiet.cs" />
+    <Compile Include="DAO\DAO_Hang.cs" />
+    <Compile Include="DAO\DAO_Menu.cs" />
+    <Compile Include="DAO\DAO_Mon.cs" />
+    <Compile Include="DAO\DAO_NCC.cs" />
+    <Compile Include="DAO\DAO_NDHang.cs" />
+    <Compile Include="DAO\DAO_Table.cs" />
+    <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DTO\DTO_Account.cs" />
+    <Compile Include="DTO\DTO_Bill.cs" />
+    <Compile Include="DTO\DTO_BillInfo.cs" />
+    <Compile Include="DTO\DTO_Dat.cs" />
+    <Compile Include="DTO\DTO_DatChiTiet.cs" />
+    <Compile Include="DTO\DTO_Hang.cs" />
+    <Compile Include="DTO\DTO_Menu.cs" />
+    <Compile Include="DTO\DTO_Mon.cs" />
+    <Compile Include="DTO\DTO_NCC.cs" />
+    <Compile Include="DTO\DTO_NDHang.cs" />
+    <Compile Include="DTO\DTO_Table.cs" />
+    <Compile Include="Form\FAccountProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FAccountProfile.Designer.cs">
+      <DependentUpon>FAccountProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\FChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +101,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\FAccountProfile.resx">
+      <DependentUpon>FAccountProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FChinh.resx">
       <DependentUpon>FChinh.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,5 +138,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
