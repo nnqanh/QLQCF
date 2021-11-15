@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLQCF.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace QLQCF
 {
     public partial class FQuanly : Form
     {
+        public DTO_Account loginAccount;
         public FQuanly()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace QLQCF
 
         private void lbExit_Click(object sender, EventArgs e)
         {
-            FChinh f = new FChinh();
+            FChinh f = new FChinh(loginAccount);
             this.Hide();
             f.ShowDialog();
             this.Show();
