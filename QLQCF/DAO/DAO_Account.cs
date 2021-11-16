@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+namespace QLQCF.DAO
 {
     public class DAO_Account
     {
