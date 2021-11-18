@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLQCF.DAO;
+using QLQCF.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,9 +21,23 @@ namespace QLQCF
 
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
-            FChinh f = new FChinh();
-            this.Hide();
-            f.ShowDialog();
+            string tenDN = txbDangnhap.Text;
+            string matKhau = txbMatkhau.Text;
+            if (Login(tenDN, matKhau))
+            {
+                DTO_Account loginAccount = DAO_Account.Instance.GetAccountByUserName(tenDN);
+                FChinh f = new FChinh(loginAccount);
+                this.Hide();
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+            }
+        }
+        bool Login(string tenDN, string matKhau)
+        {
+            return DAO.DAO_Account.Instance.Login(tenDN,matKhau);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -30,6 +46,11 @@ namespace QLQCF
             {
                 Application.Exit();
             }
+        }
+
+        private void txbMatkhau_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
