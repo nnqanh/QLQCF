@@ -43,6 +43,7 @@
             this.txbTHT = new System.Windows.Forms.TextBox();
             this.lbTHT = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
+            this.cbTenDN = new System.Windows.Forms.ComboBox();
             this.lbTDN = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnXoaTK = new System.Windows.Forms.Button();
@@ -90,6 +91,7 @@
             this.txbTimkiemban = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.cbTinhTrangBan = new System.Windows.Forms.ComboBox();
             this.lbDonvi = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.txbSoban = new System.Windows.Forms.TextBox();
@@ -102,8 +104,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtGvBan = new System.Windows.Forms.DataGridView();
             this.tctQuanly = new System.Windows.Forms.TabControl();
-            this.cbTenDN = new System.Windows.Forms.ComboBox();
-            this.cbTinhTrangBan = new System.Windows.Forms.ComboBox();
             this.tpHDN.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -241,6 +241,13 @@
             this.panel29.Controls.Add(this.lbTDN);
             resources.ApplyResources(this.panel29, "panel29");
             this.panel29.Name = "panel29";
+            // 
+            // cbTenDN
+            // 
+            this.cbTenDN.BackColor = System.Drawing.Color.LavenderBlush;
+            resources.ApplyResources(this.cbTenDN, "cbTenDN");
+            this.cbTenDN.FormattingEnabled = true;
+            this.cbTenDN.Name = "cbTenDN";
             // 
             // lbTDN
             // 
@@ -585,6 +592,13 @@
             resources.ApplyResources(this.panel20, "panel20");
             this.panel20.Name = "panel20";
             // 
+            // cbTinhTrangBan
+            // 
+            this.cbTinhTrangBan.BackColor = System.Drawing.Color.LavenderBlush;
+            resources.ApplyResources(this.cbTinhTrangBan, "cbTinhTrangBan");
+            this.cbTinhTrangBan.FormattingEnabled = true;
+            this.cbTinhTrangBan.Name = "cbTinhTrangBan";
+            // 
             // lbDonvi
             // 
             resources.ApplyResources(this.lbDonvi, "lbDonvi");
@@ -674,20 +688,6 @@
             resources.ApplyResources(this.tctQuanly, "tctQuanly");
             this.tctQuanly.Name = "tctQuanly";
             this.tctQuanly.SelectedIndex = 0;
-            // 
-            // cbTenDN
-            // 
-            this.cbTenDN.BackColor = System.Drawing.Color.LavenderBlush;
-            resources.ApplyResources(this.cbTenDN, "cbTenDN");
-            this.cbTenDN.FormattingEnabled = true;
-            this.cbTenDN.Name = "cbTenDN";
-            // 
-            // cbTinhTrangBan
-            // 
-            this.cbTinhTrangBan.BackColor = System.Drawing.Color.LavenderBlush;
-            resources.ApplyResources(this.cbTinhTrangBan, "cbTinhTrangBan");
-            this.cbTinhTrangBan.FormattingEnabled = true;
-            this.cbTinhTrangBan.Name = "cbTinhTrangBan";
             // 
             // FQuanlyBan
             // 

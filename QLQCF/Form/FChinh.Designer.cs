@@ -68,10 +68,10 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.lsvHoadon);
-            this.panel2.Location = new System.Drawing.Point(419, 97);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(559, 119);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(430, 366);
+            this.panel2.Size = new System.Drawing.Size(573, 450);
             this.panel2.TabIndex = 2;
             // 
             // lsvHoadon
@@ -84,10 +84,10 @@
             this.columnHeader4});
             this.lsvHoadon.GridLines = true;
             this.lsvHoadon.HideSelection = false;
-            this.lsvHoadon.Location = new System.Drawing.Point(2, 2);
-            this.lsvHoadon.Margin = new System.Windows.Forms.Padding(2);
+            this.lsvHoadon.Location = new System.Drawing.Point(3, 2);
+            this.lsvHoadon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lsvHoadon.Name = "lsvHoadon";
-            this.lsvHoadon.Size = new System.Drawing.Size(428, 362);
+            this.lsvHoadon.Size = new System.Drawing.Size(569, 445);
             this.lsvHoadon.TabIndex = 0;
             this.lsvHoadon.UseCompatibleStateImageBehavior = false;
             this.lsvHoadon.View = System.Windows.Forms.View.Details;
@@ -122,10 +122,10 @@
             this.panel3.Controls.Add(this.btnChuyenban);
             this.panel3.Controls.Add(this.cbxChuyenban);
             this.panel3.Controls.Add(this.btnThanhtoan);
-            this.panel3.Location = new System.Drawing.Point(419, 467);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(559, 575);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(430, 90);
+            this.panel3.Size = new System.Drawing.Size(573, 111);
             this.panel3.TabIndex = 3;
             // 
             // cbxGopBan
@@ -134,10 +134,10 @@
             this.cbxGopBan.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbxGopBan.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxGopBan.FormattingEnabled = true;
-            this.cbxGopBan.Location = new System.Drawing.Point(120, 50);
-            this.cbxGopBan.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxGopBan.Location = new System.Drawing.Point(160, 62);
+            this.cbxGopBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxGopBan.Name = "cbxGopBan";
-            this.cbxGopBan.Size = new System.Drawing.Size(101, 26);
+            this.cbxGopBan.Size = new System.Drawing.Size(135, 30);
             this.cbxGopBan.TabIndex = 10;
             // 
             // btnGopBan
@@ -146,10 +146,10 @@
             this.btnGopBan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGopBan.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGopBan.ForeColor = System.Drawing.Color.White;
-            this.btnGopBan.Location = new System.Drawing.Point(120, 9);
-            this.btnGopBan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGopBan.Location = new System.Drawing.Point(160, 11);
+            this.btnGopBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGopBan.Name = "btnGopBan";
-            this.btnGopBan.Size = new System.Drawing.Size(101, 30);
+            this.btnGopBan.Size = new System.Drawing.Size(135, 37);
             this.btnGopBan.TabIndex = 9;
             this.btnGopBan.Text = "Gộp bàn";
             this.btnGopBan.UseVisualStyleBackColor = true;
@@ -161,10 +161,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(236, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(315, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 30);
+            this.button1.Size = new System.Drawing.Size(135, 37);
             this.button1.TabIndex = 8;
             this.button1.Text = "Tổng tiền";
             this.button1.UseVisualStyleBackColor = true;
@@ -174,10 +174,11 @@
             this.txbTongTien.BackColor = System.Drawing.SystemColors.Window;
             this.txbTongTien.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTongTien.ForeColor = System.Drawing.Color.HotPink;
-            this.txbTongTien.Location = new System.Drawing.Point(236, 50);
+            this.txbTongTien.Location = new System.Drawing.Point(315, 62);
+            this.txbTongTien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbTongTien.Name = "txbTongTien";
             this.txbTongTien.ReadOnly = true;
-            this.txbTongTien.Size = new System.Drawing.Size(101, 25);
+            this.txbTongTien.Size = new System.Drawing.Size(135, 29);
             this.txbTongTien.TabIndex = 7;
             this.txbTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -187,10 +188,10 @@
             this.btnChuyenban.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnChuyenban.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChuyenban.ForeColor = System.Drawing.Color.White;
-            this.btnChuyenban.Location = new System.Drawing.Point(7, 9);
-            this.btnChuyenban.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChuyenban.Location = new System.Drawing.Point(9, 11);
+            this.btnChuyenban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChuyenban.Name = "btnChuyenban";
-            this.btnChuyenban.Size = new System.Drawing.Size(101, 30);
+            this.btnChuyenban.Size = new System.Drawing.Size(135, 37);
             this.btnChuyenban.TabIndex = 5;
             this.btnChuyenban.Text = "Chuyển bàn";
             this.btnChuyenban.UseVisualStyleBackColor = true;
@@ -202,10 +203,10 @@
             this.cbxChuyenban.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbxChuyenban.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxChuyenban.FormattingEnabled = true;
-            this.cbxChuyenban.Location = new System.Drawing.Point(7, 49);
-            this.cbxChuyenban.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxChuyenban.Location = new System.Drawing.Point(9, 60);
+            this.cbxChuyenban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxChuyenban.Name = "cbxChuyenban";
-            this.cbxChuyenban.Size = new System.Drawing.Size(101, 26);
+            this.cbxChuyenban.Size = new System.Drawing.Size(135, 30);
             this.cbxChuyenban.TabIndex = 5;
             // 
             // btnThanhtoan
@@ -214,10 +215,10 @@
             this.btnThanhtoan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThanhtoan.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhtoan.ForeColor = System.Drawing.Color.White;
-            this.btnThanhtoan.Location = new System.Drawing.Point(348, 9);
-            this.btnThanhtoan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThanhtoan.Location = new System.Drawing.Point(464, 11);
+            this.btnThanhtoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThanhtoan.Name = "btnThanhtoan";
-            this.btnThanhtoan.Size = new System.Drawing.Size(80, 66);
+            this.btnThanhtoan.Size = new System.Drawing.Size(107, 81);
             this.btnThanhtoan.TabIndex = 5;
             this.btnThanhtoan.Text = "Thanh toán";
             this.btnThanhtoan.UseVisualStyleBackColor = true;
@@ -231,10 +232,10 @@
             this.panel4.Controls.Add(this.lbSL);
             this.panel4.Controls.Add(this.lbMon);
             this.panel4.Controls.Add(this.cbMon);
-            this.panel4.Location = new System.Drawing.Point(419, 37);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(559, 46);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(430, 52);
+            this.panel4.Size = new System.Drawing.Size(573, 64);
             this.panel4.TabIndex = 4;
             // 
             // btnThemmon
@@ -243,10 +244,10 @@
             this.btnThemmon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThemmon.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemmon.ForeColor = System.Drawing.Color.White;
-            this.btnThemmon.Location = new System.Drawing.Point(326, 6);
-            this.btnThemmon.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThemmon.Location = new System.Drawing.Point(435, 7);
+            this.btnThemmon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemmon.Name = "btnThemmon";
-            this.btnThemmon.Size = new System.Drawing.Size(101, 37);
+            this.btnThemmon.Size = new System.Drawing.Size(135, 46);
             this.btnThemmon.TabIndex = 4;
             this.btnThemmon.Text = "Thêm món";
             this.btnThemmon.UseVisualStyleBackColor = true;
@@ -257,15 +258,15 @@
             this.nmSoLuong.BackColor = System.Drawing.Color.LavenderBlush;
             this.nmSoLuong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nmSoLuong.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nmSoLuong.Location = new System.Drawing.Point(79, 27);
-            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(2);
+            this.nmSoLuong.Location = new System.Drawing.Point(105, 33);
+            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nmSoLuong.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
             this.nmSoLuong.Name = "nmSoLuong";
-            this.nmSoLuong.Size = new System.Drawing.Size(153, 21);
+            this.nmSoLuong.Size = new System.Drawing.Size(204, 25);
             this.nmSoLuong.TabIndex = 3;
             this.nmSoLuong.Value = new decimal(new int[] {
             1,
@@ -277,10 +278,9 @@
             // 
             this.lbSL.AutoSize = true;
             this.lbSL.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSL.Location = new System.Drawing.Point(4, 28);
-            this.lbSL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSL.Location = new System.Drawing.Point(5, 34);
             this.lbSL.Name = "lbSL";
-            this.lbSL.Size = new System.Drawing.Size(61, 15);
+            this.lbSL.Size = new System.Drawing.Size(73, 17);
             this.lbSL.TabIndex = 2;
             this.lbSL.Text = "Số lượng:";
             // 
@@ -288,10 +288,9 @@
             // 
             this.lbMon.AutoSize = true;
             this.lbMon.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMon.Location = new System.Drawing.Point(4, 5);
-            this.lbMon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMon.Location = new System.Drawing.Point(5, 6);
             this.lbMon.Name = "lbMon";
-            this.lbMon.Size = new System.Drawing.Size(33, 15);
+            this.lbMon.Size = new System.Drawing.Size(39, 17);
             this.lbMon.TabIndex = 1;
             this.lbMon.Text = "Món:";
             // 
@@ -301,10 +300,10 @@
             this.cbMon.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbMon.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMon.FormattingEnabled = true;
-            this.cbMon.Location = new System.Drawing.Point(79, 2);
-            this.cbMon.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMon.Location = new System.Drawing.Point(105, 2);
+            this.cbMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMon.Name = "cbMon";
-            this.cbMon.Size = new System.Drawing.Size(154, 23);
+            this.cbMon.Size = new System.Drawing.Size(204, 25);
             this.cbMon.TabIndex = 0;
             this.cbMon.SelectedIndexChanged += new System.EventHandler(this.cbMon_SelectedIndexChanged);
             // 
@@ -312,10 +311,10 @@
             // 
             this.fLPBan.AutoScroll = true;
             this.fLPBan.BackColor = System.Drawing.Color.Transparent;
-            this.fLPBan.Location = new System.Drawing.Point(10, 99);
-            this.fLPBan.Margin = new System.Windows.Forms.Padding(2);
+            this.fLPBan.Location = new System.Drawing.Point(13, 122);
+            this.fLPBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fLPBan.Name = "fLPBan";
-            this.fLPBan.Size = new System.Drawing.Size(405, 457);
+            this.fLPBan.Size = new System.Drawing.Size(540, 562);
             this.fLPBan.TabIndex = 5;
             // 
             // adminToolStripMenuItem
@@ -325,20 +324,20 @@
             this.DangxuatToolStripMenuItem});
             this.adminToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.adminToolStripMenuItem.Text = "Tài khoản";
             // 
             // thongtinTKToolStripMenuItem
             // 
             this.thongtinTKToolStripMenuItem.Name = "thongtinTKToolStripMenuItem";
-            this.thongtinTKToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.thongtinTKToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.thongtinTKToolStripMenuItem.Text = "Thông tin tài khoản";
             this.thongtinTKToolStripMenuItem.Click += new System.EventHandler(this.thongtinTKToolStripMenuItem_Click);
             // 
             // DangxuatToolStripMenuItem
             // 
             this.DangxuatToolStripMenuItem.Name = "DangxuatToolStripMenuItem";
-            this.DangxuatToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.DangxuatToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.DangxuatToolStripMenuItem.Text = "Đăng xuất";
             this.DangxuatToolStripMenuItem.Click += new System.EventHandler(this.DangxuatToolStripMenuItem_Click);
             // 
@@ -351,10 +350,10 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminToolStripMenuItem,
             this.quanlyToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(10, 37);
+            this.menuStrip1.Location = new System.Drawing.Point(13, 9);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(139, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(165, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -364,21 +363,21 @@
             this.muaToolStripMenuItem,
             this.banToolStripMenuItem});
             this.quanlyToolStripMenuItem.Name = "quanlyToolStripMenuItem";
-            this.quanlyToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.quanlyToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.quanlyToolStripMenuItem.Text = "Quản lý";
             this.quanlyToolStripMenuItem.Click += new System.EventHandler(this.quanlyToolStripMenuItem_Click);
             // 
             // muaToolStripMenuItem
             // 
             this.muaToolStripMenuItem.Name = "muaToolStripMenuItem";
-            this.muaToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.muaToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
             this.muaToolStripMenuItem.Text = "Mua";
             this.muaToolStripMenuItem.Click += new System.EventHandler(this.muaToolStripMenuItem_Click);
             // 
             // banToolStripMenuItem
             // 
             this.banToolStripMenuItem.Name = "banToolStripMenuItem";
-            this.banToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.banToolStripMenuItem.Size = new System.Drawing.Size(121, 26);
             this.banToolStripMenuItem.Text = "Bán";
             this.banToolStripMenuItem.Click += new System.EventHandler(this.banToolStripMenuItem_Click);
             // 
@@ -388,10 +387,9 @@
             this.lbExit.BackColor = System.Drawing.Color.Transparent;
             this.lbExit.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbExit.ForeColor = System.Drawing.Color.DimGray;
-            this.lbExit.Location = new System.Drawing.Point(834, -5);
-            this.lbExit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbExit.Location = new System.Drawing.Point(1112, -6);
             this.lbExit.Name = "lbExit";
-            this.lbExit.Size = new System.Drawing.Size(27, 31);
+            this.lbExit.Size = new System.Drawing.Size(34, 39);
             this.lbExit.TabIndex = 6;
             this.lbExit.Text = "x";
             this.lbExit.Click += new System.EventHandler(this.lbExit_Click);
@@ -399,10 +397,10 @@
             // FChinh
             // 
             this.AccessibleName = "";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(860, 567);
+            this.ClientSize = new System.Drawing.Size(1147, 698);
             this.Controls.Add(this.lbExit);
             this.Controls.Add(this.fLPBan);
             this.Controls.Add(this.panel4);
@@ -412,7 +410,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FChinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
