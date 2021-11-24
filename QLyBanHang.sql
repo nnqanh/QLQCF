@@ -279,6 +279,13 @@ end
 
 -- Hàm
 go
+create proc spLogin @tenDN varchar(50), @matKhau varchar(50)
+as
+begin
+	select * from Account where TenDN = @tenDN and MatKhau = @matKhau
+end
+
+go
 alter function fGetMaxSoHDX()
 returns int
 as
@@ -351,6 +358,7 @@ begin
 		set @maNCCmax = 1
 	return @maNCCmax
 end
+
 go
 create function fGetMaxMaNDH()
 returns int
@@ -363,6 +371,31 @@ begin
 	return @maNDHmax
 end
 
+go
+alter function fCheckSDT (@soDT varchar(13))
+returns int
+as
+begin
+	declare @kq int = -1, @i int, @kiTu varchar(13), @so varchar(13) = @soDT
+	set @i = LEN(@so)
+	if(@i <10)
+		return @kq
+	while @i>0
+	begin
+		set @kiTu = SUBSTRING(@so,1,1)
+		set @so = SUBSTRING(@so,2,LEN(@so)-1)
+		if (@kiTu not in ('0','1','2','3','4','5','6','7','8','9'))
+		begin
+			set @kq = -1
+			break
+		end
+		else
+			set @kq = 1
+		set @i = @i - 1
+	end
+	return @kq
+end
+select dbo.fCheckSDT('084578z7483')
 go
 alter FUNCTION fuConvertToUnsign1 ( @strInput NVARCHAR(4000) ) 
 RETURNS NVARCHAR(4000)
@@ -442,13 +475,6 @@ begin
 end
 
 go
-create proc spLogin @tenDN varchar(50), @matKhau varchar(50)
-as
-begin
-	select * from Account where TenDN = @tenDN and MatKhau = @matKhau
-end
-
-go
 alter proc spInsertXuatHD @soBan int
 as
 begin
@@ -507,6 +533,8 @@ begin
 	values (@maHang, @tenHang, @donVi, @donGia)
 end
 
+select * from XuatHDChiTiet
+
 go
 alter proc spInsertNDHang @tenNDHang nvarchar(100)
 as
@@ -519,14 +547,17 @@ begin
 end
 
 go
-create proc spInsertNCC @tenNCC nvarchar(100), @diaChi nvarchar(200), @soDT varchar(13)
+alter proc spInsertNCC @tenNCC nvarchar(100), @diaChi nvarchar(200), @soDT varchar(13)
 as
 begin
 	declare @maNCC int
 	set @maNCC = (select dbo.fGetMaxMaNCC()) + 1
 	insert into NhaCC
-	values (@maNCC, @tenNCC, @diaChi, @soDT)
+	values (@maNCC, @tenNCC, @diaChi, @soDT)	
 end
+
+select * from NhaCC
+select * from DatChiTiet
 
 go
 create proc spInsertBan @soBan int, @tinhTrang nvarchar(30)
@@ -568,13 +599,6 @@ begin
 	begin
 		update XuatHD set SoBan = @soBan2 where SoHDX = @soHD1
 		update XuatHD set SoBan = @soBan1 where SoHDX = @soHD2
-		/*
-		select * into Bang from XuatHDChiTiet where SoHDX = @soHD2		-- lấy dữ liệu của cthd2 lưu vào bảng trung gian
-		delete XuatHDChiTiet where SoHDX = @soHD2						-- xóa dữ liệu của cthd2
-		update XuatHDChiTiet set SoHDX = @soHD2 where SoHDX = @soHD1	-- đổi cthd1 thành cthd2
-		update Bang set SoHDX = @soHD1									-- cập nhật bảng trung gian thành dữ liệu của cthd1
-		insert into XuatHDChiTiet Select * from Bang					-- thêm dữ liệu của cthd1
-		drop table Bang */
 	end
 	else if @tinhTrangBan1 = N'Trống' and @tinhTrangBan2 = N'Trống' -- chuyển 2 bàn trống
 		return

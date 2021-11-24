@@ -69,7 +69,7 @@
             // 
             this.panel2.Controls.Add(this.lsvHoadon);
             this.panel2.Location = new System.Drawing.Point(419, 97);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(430, 366);
             this.panel2.TabIndex = 2;
@@ -85,7 +85,7 @@
             this.lsvHoadon.GridLines = true;
             this.lsvHoadon.HideSelection = false;
             this.lsvHoadon.Location = new System.Drawing.Point(2, 2);
-            this.lsvHoadon.Margin = new System.Windows.Forms.Padding(2);
+            this.lsvHoadon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lsvHoadon.Name = "lsvHoadon";
             this.lsvHoadon.Size = new System.Drawing.Size(428, 362);
             this.lsvHoadon.TabIndex = 0;
@@ -123,7 +123,7 @@
             this.panel3.Controls.Add(this.cbxChuyenban);
             this.panel3.Controls.Add(this.btnThanhtoan);
             this.panel3.Location = new System.Drawing.Point(419, 467);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(430, 90);
             this.panel3.TabIndex = 3;
@@ -131,13 +131,14 @@
             // cbxGopBan
             // 
             this.cbxGopBan.BackColor = System.Drawing.Color.LavenderBlush;
-            this.cbxGopBan.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbxGopBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxGopBan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbxGopBan.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxGopBan.FormattingEnabled = true;
             this.cbxGopBan.Location = new System.Drawing.Point(120, 50);
-            this.cbxGopBan.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxGopBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxGopBan.Name = "cbxGopBan";
-            this.cbxGopBan.Size = new System.Drawing.Size(101, 26);
+            this.cbxGopBan.Size = new System.Drawing.Size(102, 26);
             this.cbxGopBan.TabIndex = 10;
             // 
             // btnGopBan
@@ -147,7 +148,7 @@
             this.btnGopBan.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGopBan.ForeColor = System.Drawing.Color.White;
             this.btnGopBan.Location = new System.Drawing.Point(120, 9);
-            this.btnGopBan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGopBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGopBan.Name = "btnGopBan";
             this.btnGopBan.Size = new System.Drawing.Size(101, 30);
             this.btnGopBan.TabIndex = 9;
@@ -162,7 +163,7 @@
             this.button1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(236, 9);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 30);
             this.button1.TabIndex = 8;
@@ -177,7 +178,7 @@
             this.txbTongTien.Location = new System.Drawing.Point(236, 50);
             this.txbTongTien.Name = "txbTongTien";
             this.txbTongTien.ReadOnly = true;
-            this.txbTongTien.Size = new System.Drawing.Size(101, 25);
+            this.txbTongTien.Size = new System.Drawing.Size(102, 25);
             this.txbTongTien.TabIndex = 7;
             this.txbTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -188,7 +189,7 @@
             this.btnChuyenban.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChuyenban.ForeColor = System.Drawing.Color.White;
             this.btnChuyenban.Location = new System.Drawing.Point(7, 9);
-            this.btnChuyenban.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChuyenban.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnChuyenban.Name = "btnChuyenban";
             this.btnChuyenban.Size = new System.Drawing.Size(101, 30);
             this.btnChuyenban.TabIndex = 5;
@@ -199,13 +200,14 @@
             // cbxChuyenban
             // 
             this.cbxChuyenban.BackColor = System.Drawing.Color.LavenderBlush;
-            this.cbxChuyenban.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbxChuyenban.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxChuyenban.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbxChuyenban.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxChuyenban.FormattingEnabled = true;
             this.cbxChuyenban.Location = new System.Drawing.Point(7, 49);
-            this.cbxChuyenban.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxChuyenban.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxChuyenban.Name = "cbxChuyenban";
-            this.cbxChuyenban.Size = new System.Drawing.Size(101, 26);
+            this.cbxChuyenban.Size = new System.Drawing.Size(102, 26);
             this.cbxChuyenban.TabIndex = 5;
             // 
             // btnThanhtoan
@@ -215,7 +217,7 @@
             this.btnThanhtoan.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhtoan.ForeColor = System.Drawing.Color.White;
             this.btnThanhtoan.Location = new System.Drawing.Point(348, 9);
-            this.btnThanhtoan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThanhtoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnThanhtoan.Name = "btnThanhtoan";
             this.btnThanhtoan.Size = new System.Drawing.Size(80, 66);
             this.btnThanhtoan.TabIndex = 5;
@@ -232,7 +234,7 @@
             this.panel4.Controls.Add(this.lbMon);
             this.panel4.Controls.Add(this.cbMon);
             this.panel4.Location = new System.Drawing.Point(419, 37);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(430, 52);
             this.panel4.TabIndex = 4;
@@ -244,7 +246,7 @@
             this.btnThemmon.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemmon.ForeColor = System.Drawing.Color.White;
             this.btnThemmon.Location = new System.Drawing.Point(326, 6);
-            this.btnThemmon.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThemmon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnThemmon.Name = "btnThemmon";
             this.btnThemmon.Size = new System.Drawing.Size(101, 37);
             this.btnThemmon.TabIndex = 4;
@@ -258,7 +260,7 @@
             this.nmSoLuong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nmSoLuong.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmSoLuong.Location = new System.Drawing.Point(79, 27);
-            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(2);
+            this.nmSoLuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nmSoLuong.Minimum = new decimal(new int[] {
             10,
             0,
@@ -298,11 +300,13 @@
             // cbMon
             // 
             this.cbMon.BackColor = System.Drawing.Color.LavenderBlush;
-            this.cbMon.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMon.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbMon.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMon.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbMon.FormattingEnabled = true;
             this.cbMon.Location = new System.Drawing.Point(79, 2);
-            this.cbMon.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbMon.Name = "cbMon";
             this.cbMon.Size = new System.Drawing.Size(154, 23);
             this.cbMon.TabIndex = 0;
@@ -313,7 +317,7 @@
             this.fLPBan.AutoScroll = true;
             this.fLPBan.BackColor = System.Drawing.Color.Transparent;
             this.fLPBan.Location = new System.Drawing.Point(10, 99);
-            this.fLPBan.Margin = new System.Windows.Forms.Padding(2);
+            this.fLPBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fLPBan.Name = "fLPBan";
             this.fLPBan.Size = new System.Drawing.Size(405, 457);
             this.fLPBan.TabIndex = 5;
@@ -351,7 +355,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminToolStripMenuItem,
             this.quanlyToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(10, 37);
+            this.menuStrip1.Location = new System.Drawing.Point(10, 7);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(139, 24);
@@ -412,7 +416,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FChinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);

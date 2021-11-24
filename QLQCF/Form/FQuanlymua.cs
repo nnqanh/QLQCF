@@ -172,16 +172,28 @@ namespace QLQCF
         {
             int maHang = Convert.ToInt32(txbMahang.Text);
 
-            if (DAO_Hang.Instance.DeleteHang(maHang))
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa hàng hóa này không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Xóa nguyên vật liệu thành công");
-                LoadHangList();
-                if (deleteHang != null)
-                    deleteHang(this, new EventArgs());
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi khi xóa nguyên vật liệu");
+                if (DAO_Hang.Instance.CheckDatCTByMaHang(maHang))
+                {
+                    if (DAO_Hang.Instance.DeleteHang(maHang))
+                    {
+                        MessageBox.Show("Xóa nguyên vật liệu thành công");
+                        LoadHangList();
+                        if (deleteHang != null)
+                            deleteHang(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi xóa nguyên vật liệu");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bạn không thể xóa hàng hóa đã có đơn đặt hàng");
+                    return;
+                } 
+                    
             }
         }
         private event EventHandler insertHang;
@@ -257,17 +269,27 @@ namespace QLQCF
         private void btnXoaNDH_Click(object sender, EventArgs e)
         {
             int maNDHang = Convert.ToInt32(txbMaNDH.Text);
-
-            if (DAO_NDHang.Instance.DeleteNDHang(maNDHang))
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa người đặt hàng này không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Xóa người đặt hàng thành công");
-                LoadNDHList();
-                if (deleteNDH != null)
-                    deleteNDH(this, new EventArgs());
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi khi xóa người đặt hàng");
+                if (DAO_NDHang.Instance.CheckDatByMaNDH(maNDHang))
+                {
+                    if (DAO_NDHang.Instance.DeleteNDHang(maNDHang))
+                    {
+                        MessageBox.Show("Xóa người đặt hàng thành công");
+                        LoadNDHList();
+                        if (deleteNDH != null)
+                            deleteNDH(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi xóa người đặt hàng");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bạn không thể xóa người đặt hàng đã có đơn đặt hàng");
+                    return;
+                }
             }
         }
         private event EventHandler insertNDH;
@@ -323,41 +345,58 @@ namespace QLQCF
                 MessageBox.Show("Có lỗi khi thêm nhà cung cấp");
             }
         }
-
         private void btnSuaNCC_Click(object sender, EventArgs e)
         {
             string tenNCC = txbTenNCC.Text;
             string diaChi = txbDiachiNCC.Text;
             string soDT = txbSDT.Text;
-            int maNCC = Convert.ToInt32(txbMaNCC.Text);
+            int maNCC = Convert.ToInt32(txbMaNCC.Text);  
 
-            if (DAO_NCC.Instance.UpdateNCC(tenNCC, diaChi, soDT, maNCC))
+            if (DAO_NCC.Instance.CheckSDT(soDT))
             {
-                MessageBox.Show("Sửa nhà cung cấp thành công");
-                LoadNCCList();
-                if (updateNCC != null)
-                    updateNCC(this, new EventArgs());
+                if (DAO_NCC.Instance.UpdateNCC(tenNCC, diaChi, soDT, maNCC))
+                {
+                    MessageBox.Show("Sửa nhà cung cấp thành công");
+                    LoadNCCList();
+                    if (updateNCC != null)
+                        updateNCC(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi khi sửa nhà cung cấp");
+                }
             }
             else
             {
-                MessageBox.Show("Có lỗi khi sửa nhà cung cấp");
+                MessageBox.Show("Số điện thoại không phù hợp");
+                return;
             }
         }
 
         private void btnNCC_Click(object sender, EventArgs e)
         {
             int maNCC = Convert.ToInt32(txbMaNCC.Text);
-
-            if (DAO_NCC.Instance.DeleteNCC(maNCC))
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa nhà cung cấp này không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Xóa nhà cung cấp thành công");
-                LoadNCCList();
-                if (deleteNCC != null)
-                    deleteNCC(this, new EventArgs());
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi khi xóa nhà cung cấp");
+                if (DAO_Dat.Instance.CheckDatByMaNCC(maNCC))
+                {
+                    if (DAO_NCC.Instance.DeleteNCC(maNCC))
+                    {
+                        MessageBox.Show("Xóa nhà cung cấp thành công");
+                        LoadNCCList();
+                        if (deleteNCC != null)
+                            deleteNCC(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi xóa nhà cung cấp");
+                    }
+                }    
+                else
+                {
+                    MessageBox.Show("Bạn không thể xóa nhà cung cấp đã có đơn đặt hàng");
+                    return;
+                }    
             }
         }
         private event EventHandler insertNCC;
