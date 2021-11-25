@@ -9,11 +9,12 @@ namespace QLQCF.DTO
 {
     public class DTO_Mon
     {
-        public DTO_Mon(int maMon, string tenMon, float donGia)
+        public DTO_Mon(int maMon, string tenMon, float donGia, string tinhTrang)
         {
             this.MaMon = maMon;
             this.TenMon = tenMon;
             this.DonGia = donGia;
+            this.TinhTrang = tinhTrang;
         }
 
         public DTO_Mon(DataRow row)
@@ -21,8 +22,14 @@ namespace QLQCF.DTO
             this.MaMon = (int)row["maMon"];
             this.TenMon = row["tenMon"].ToString();
             this.DonGia = (float)Convert.ToDouble(row["donGia"].ToString());
+            this.TinhTrang = row["tinhTrang"].ToString();
         }
-
+        private string tinhTrang;
+        public string TinhTrang
+        {
+            get { return tinhTrang; }
+            set { tinhTrang = value; }
+        }
         private float donGia;
         public float DonGia
         {

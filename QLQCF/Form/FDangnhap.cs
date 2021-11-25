@@ -47,10 +47,5 @@ namespace QLQCF
                 Application.Exit();
             }
         }
-
-        private void txbMatkhau_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

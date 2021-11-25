@@ -39,7 +39,7 @@ namespace QLQCF.DAO
 
         public bool InsertHang(string tenHang, string donVi, float donGia)
         {
-            string query = string.Format("exec spInsertHang N'{0}', {1}, {2}", tenHang, donVi, donGia);
+            string query = string.Format("exec spInsertHang N'{0}', N'{1}', {2}", tenHang, donVi, donGia);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -61,11 +61,11 @@ namespace QLQCF.DAO
             return result > 0;
         }
 
-        public List<DTO_Hang> SearchNVLByTenHang(string tenHang)
+        public List<DTO_Hang> SearchNVL(string str)
         {
             List<DTO_Hang> list = new List<DTO_Hang>();
 
-            string query = string.Format("select * from Hang where dbo.fuConvertToUnsign1(TenHang) like N'%' + dbo.fuConvertToUnsign1(N'{0}') + N'%'", tenHang);
+            string query = string.Format("exec spTimKiemHang N'{0}'", str);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -76,6 +76,12 @@ namespace QLQCF.DAO
             }
 
             return list;
+        }
+        public bool CheckDatCTByMaHang(int maHang)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from DatChiTiet where MaHang = " + maHang);
+            return dem <= 0;
+
         }
     }
 }

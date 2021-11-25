@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace QLQCF.DTO
 {
-    public class DTO_TinhTrangBan
+    public class DTO_TinhTrang
     {
-        public DTO_TinhTrangBan(string tinhTrang)
+        public DTO_TinhTrang(string tinhTrang)
         {
             this.tinhTrang = tinhTrang;
         }
 
-        public DTO_TinhTrangBan(DataRow row)
+        public DTO_TinhTrang(DataRow row)
         {
             this.TinhTrang = row["tinhTrang"].ToString();
         }

@@ -83,5 +83,17 @@ namespace QLQCF.DAO
 
             return result > 0;
         }
+        public bool CheckHDXbySoBan(int soBan)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from XuatHD where SoBan = " + soBan);
+            return dem <= 0;
+
+        }
+        public bool CheckSoBan(int soBan)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from Ban where SoBan = " + soBan);
+            return dem <= 0;
+
+        }
     }
 }

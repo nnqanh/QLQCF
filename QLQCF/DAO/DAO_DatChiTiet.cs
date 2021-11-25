@@ -21,7 +21,7 @@ namespace QLQCF.DAO
         {
             List<DTO_DatChiTiet> list = new List<DTO_DatChiTiet>();
 
-            string query = "Select MaDDH, TenHang, SoLuong, DonGia, ThanhTien from DatChiTiet join Hang on DatChiTiet.MaHang = Hang.MaHang where MaDDH = " + maDDH;
+            string query = "Select MaDDH, TenHang, SoLuong, ThanhTien from DatChiTiet join Hang on DatChiTiet.MaHang = Hang.MaHang where MaDDH = " + maDDH;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)

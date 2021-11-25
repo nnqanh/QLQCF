@@ -57,11 +57,11 @@ namespace QLQCF.DAO
 
             return result > 0;
         }
-        public List<DTO_NDHang> SearchNDHByTenNDH(string tenNDH)
+        public List<DTO_NDHang> SearchNDH(string str)
         {
             List<DTO_NDHang> list = new List<DTO_NDHang>();
 
-            string query = string.Format("select * from NgDatHang where dbo.fuConvertToUnsign1(TenNDH) like N'%' + dbo.fuConvertToUnsign1(N'{0}') + N'%'", tenNDH);
+            string query = string.Format("exec spTimKiemNDH N'{0}'", str);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -72,6 +72,17 @@ namespace QLQCF.DAO
             }
 
             return list;
+        }
+        public bool CheckDatByMaNDH(int maNDH)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from DAT where MaNDH = " + maNDH);
+            return dem <= 0;
+        }
+        public bool CheckTenNDH(string tenNDH)
+        {
+            string query = string.Format("select COUNT(*) from NgDatHang where TenNDH = N'{0}'", tenNDH);
+            int dem = (int)DataProvider.Instance.ExecuteScalar(query);
+            return dem <= 0;
         }
     }
 }

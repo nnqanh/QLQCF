@@ -56,5 +56,23 @@ namespace QLQCF.DAO
 
             return result > 0;
         }
+        public bool ThanhToanDAT(int maDDH)
+        {
+            string query = string.Format("Update DAT set TinhTrang = N'Đã thanh toán' where MaDDH = {0}", maDDH);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public bool CheckDatByMaNCC(int maNCC)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from DAT where MaNCC = " + maNCC);
+            return dem <= 0;
+        }
+        public bool CheckDat(int maDDH)
+        {
+            string query = string.Format("Select COUNT(*) from DAT where MaDDH = {0} and TinhTrang = N'Đã thanh toán'", maDDH);
+            int dem = (int)DataProvider.Instance.ExecuteScalar(query);
+            return dem <= 0;
+        }
     }
 }

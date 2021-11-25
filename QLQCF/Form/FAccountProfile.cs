@@ -27,7 +27,7 @@ namespace QLQCF
         }
         void ChangeAccount(DTO_Account acc)
         {
-            txbTDN.Text = LoginAccount.TenDN;
+            txbTenDN.Text = LoginAccount.TenDN;
             txbTHT.Text = LoginAccount.TenHienThi;
         }
         void UpdateAccountInfo()
@@ -36,7 +36,7 @@ namespace QLQCF
             string matKhau = txtMatKhau.Text;
             string matKhauMoi = txtMKmoi.Text;
             string nhapLaiMK = txtNhapLai.Text;
-            string tenDN = txbTDN.Text;
+            string tenDN = txbTenDN.Text;
 
             if (!matKhauMoi.Equals(nhapLaiMK))
             {

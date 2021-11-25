@@ -58,7 +58,7 @@
     <Compile Include="DAO\DAO_NCC.cs" />
     <Compile Include="DAO\DAO_NDHang.cs" />
     <Compile Include="DAO\DAO_Table.cs" />
-    <Compile Include="DAO\DAO_TinhTrangBan.cs" />
+    <Compile Include="DAO\DAO_TinhTrang.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DTO\DTO_Account.cs" />
     <Compile Include="DTO\DTO_Bill.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="DTO\DTO_NCC.cs" />
     <Compile Include="DTO\DTO_NDHang.cs" />
     <Compile Include="DTO\DTO_Table.cs" />
-    <Compile Include="DTO\DTO_TinhTrangBan.cs" />
+    <Compile Include="DTO\DTO_TinhTrang.cs" />
     <Compile Include="Form\FAccountProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +133,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -147,6 +148,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\88-885453_login-white-on-clear-user-icon-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

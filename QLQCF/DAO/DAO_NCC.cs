@@ -32,7 +32,6 @@ namespace QLQCF.DAO
                 DTO_NCC nhaCC = new DTO_NCC(item);
                 list.Add(nhaCC);
             }
-
             return list;
         }
         public bool InsertNCC(string tenNCC, string diaChi, string soDT)
@@ -56,11 +55,19 @@ namespace QLQCF.DAO
 
             return result > 0;
         }
-        public List<DTO_NCC> SearchNCCByTenNCC(string tenNCC)
+        public bool CheckSDT(string soDT)
+        {
+            string query = string.Format("select dbo.fCheckSDT('{0}')", soDT);
+            int result = (int)DataProvider.Instance.ExecuteScalar(query);
+
+            return result > 0;
+        }
+
+        public List<DTO_NCC> SearchNCC(string str)
         {
             List<DTO_NCC> list = new List<DTO_NCC>();
 
-            string query = string.Format("select * from NhaCC where dbo.fuConvertToUnsign1(TenNCC) like N'%' + dbo.fuConvertToUnsign1(N'{0}') + N'%'", tenNCC);
+            string query = string.Format("exec spTimKiemNCC N'{0}'", str);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -71,6 +78,12 @@ namespace QLQCF.DAO
             }
 
             return list;
+        }
+        public bool CheckNCC(string tenNCC, string diaChi)
+        {
+            string query = string.Format("select COUNT(*) from NhaCC where TenNCC = N'{0}'and DiaChi = N'{1}'", tenNCC, diaChi);
+            int dem = (int)DataProvider.Instance.ExecuteScalar(query);
+            return dem <= 0;
         }
     }
 }

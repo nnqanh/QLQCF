@@ -9,26 +9,41 @@ namespace QLQCF.DTO
 {
     public class DTO_Dat
     {
-        public DTO_Dat( int maDDH, string tenNDH, string tenNCC,DateTime thoiGian, float tongTien)
+        public DTO_Dat(string tinhTrang, string tenNDH, string tenNCC, float tongTien, DateTime thoiGian, int maDDH)
         {
-            this.MaDDH = maDDH;
+            this.TinhTrang = tinhTrang;            
             this.TenNDH = tenNDH;
             this.TenNCC = tenNCC;
-            this.ThoiGian = thoiGian;
             this.TongTien = tongTien;
+            this.ThoiGian = thoiGian;
+            this.MaDDH = maDDH;
         }
 
         public DTO_Dat(DataRow row)
         {
-            this.MaDDH = (int)row["maDDH"];
+            this.TinhTrang = row["tinhTrang"].ToString();            
             this.TenNDH = row["tenNDH"].ToString();
             this.TenNCC = row["tenNCC"].ToString();
+            this.TongTien = (float)Convert.ToDouble(row["tongTien"].ToString());
 
             var thoiGianTemp = row["thoiGian"];
             if (thoiGianTemp.ToString() != "")
                 this.ThoiGian = (DateTime?)thoiGianTemp;
+            this.MaDDH = (int)row["maDDH"];
+        }
 
-            this.TongTien = (float)Convert.ToDouble(row["tongTien"].ToString());
+        private int maDDH;
+        public int MaDDH
+        {
+            get { return maDDH; }
+            set { maDDH = value; }
+        }
+
+        private DateTime? thoiGian;
+        public DateTime? ThoiGian
+        {
+            get { return thoiGian; }
+            set { thoiGian = value; }
         }
 
         private float tongTien;
@@ -36,12 +51,6 @@ namespace QLQCF.DTO
         {
             get { return tongTien; }
             set { tongTien = value; }
-        }
-        private DateTime? thoiGian;
-        public DateTime? ThoiGian
-        {
-            get { return thoiGian; }
-            set { thoiGian = value; }
         }
 
         private string tenNCC;
@@ -58,11 +67,11 @@ namespace QLQCF.DTO
             set { tenNDH = value; }
         }
 
-        private int maDDH;
-        public int MaDDH
+        private string tinhTrang;
+        public string TinhTrang
         {
-            get { return maDDH; }
-            set { maDDH = value; }
+            get { return tinhTrang; }
+            set { tinhTrang = value; }
         }
     }
 }

@@ -20,11 +20,11 @@ namespace QLQCF.DAO
 
         private DAO_Mon() { }
 
-        public List<DTO_Mon> GetListMon()
+        public List<DTO_Mon> GetListMonBan()
         {
             List<DTO_Mon> list = new List<DTO_Mon> ();
 
-            string query = "select * from Mon";
+            string query = "select * from Mon where TinhTrang = N'Đang bán'";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             
@@ -36,16 +36,32 @@ namespace QLQCF.DAO
 
             return list;
         }
-        public bool InsertMon(string tenMon, float donGia)
+        public List<DTO_Mon> GetListMonQuanLy()
+        {
+            List<DTO_Mon> list = new List<DTO_Mon>();
+
+            string query = "select * from Mon";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                DTO_Mon mon = new DTO_Mon(item);
+                list.Add(mon);
+            }
+
+            return list;
+        }
+        public bool InsertMon(string tenMon, float donGia, string tinhTrang)
         {   
-            string query = string.Format("exec spInsertMon N'{0}', {1}", tenMon, donGia);
+            string query = string.Format("exec spInsertMon N'{0}', {1}, N'{2}'", tenMon, donGia, tinhTrang);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
-        public bool UpdateMon( string tenMon, float donGia, int maMon)
+        public bool UpdateMon( string tenMon, float donGia, int maMon, string tinhTrang)
         {
-            string query = string.Format("update Mon set TenMon = N'{0}', DonGia = {1} where MaMon = {2}", tenMon, donGia, maMon);
+            string query = string.Format("update Mon set TenMon = N'{0}', DonGia = {1}, TinhTrang = N'{2}' where MaMon = {3}", tenMon, donGia, tinhTrang, maMon);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -59,11 +75,11 @@ namespace QLQCF.DAO
 
             return result > 0;
         }
-        public List<DTO_Mon> SearchMonByName(string tenMon)
+        public List<DTO_Mon> SearchMon(string str)
         {
             List<DTO_Mon> list = new List<DTO_Mon>();
 
-            string query = string.Format("select * from Mon where dbo.fuConvertToUnsign1(TenMon) like N'%' + dbo.fuConvertToUnsign1(N'{0}') + N'%'", tenMon);
+            string query = string.Format("exec spTimKiemMon N'{0}'", str);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -75,6 +91,11 @@ namespace QLQCF.DAO
 
             return list;
         }
+        public bool CheckHDByMaMon(int maMon)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from XuatHDChiTiet where MaMon = " + maMon);
+            return dem <= 0;
 
+        }
     }
 }

@@ -110,7 +110,6 @@
             this.txbMatkhau.TabIndex = 1;
             this.txbMatkhau.Text = "22012001";
             this.txbMatkhau.UseSystemPasswordChar = true;
-            this.txbMatkhau.TextChanged += new System.EventHandler(this.txbMatkhau_TextChanged);
             // 
             // btnThoat
             // 

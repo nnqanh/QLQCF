@@ -93,7 +93,7 @@ namespace QLQCF
         
         void LoadMon()
         {
-            List<DTO_Mon> listMon = DAO_Mon.Instance.GetListMon();
+            List<DTO_Mon> listMon = DAO_Mon.Instance.GetListMonBan();
             cbMon.DataSource = listMon;
             cbMon.DisplayMember = "TenMon";
         }               
@@ -232,6 +232,11 @@ namespace QLQCF
         private void btnThanhtoan_Click(object sender, EventArgs e)
         {
             DTO_Table table = lsvHoadon.Tag as DTO_Table;
+            if (table == null)
+            {
+                MessageBox.Show("Hãy chọn bàn để thanh toán");
+                return;
+            }    
             
             int soHDX = DAO_Bill.Instance.GetUncheckBillIDByTableID(table.SoBan);
 
@@ -244,13 +249,28 @@ namespace QLQCF
                     LoadTable();
                 }
             }
+            else
+            {
+                MessageBox.Show("Không có hóa đơn nào để thanh toán");
+                return;
+            } 
+                
         }
 
         private void btnChuyenban_Click(object sender, EventArgs e)
         {
+            DTO_Table table = lsvHoadon.Tag as DTO_Table;
+
+            if (table == null)
+            {
+                MessageBox.Show("Hãy chọn bàn muốn chuyển");
+                return;
+            }
+
             int soBan1 = (lsvHoadon.Tag as DTO_Table).SoBan;
 
             int soBan2 = (cbxChuyenban.SelectedItem as DTO_Table).SoBan;
+            
 
             if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} sang bàn {1} không?", soBan1, soBan2), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {

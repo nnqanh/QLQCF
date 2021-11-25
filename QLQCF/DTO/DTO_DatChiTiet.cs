@@ -9,12 +9,11 @@ namespace QLQCF.DTO
 {
     public class DTO_DatChiTiet
     {
-        public DTO_DatChiTiet(int maDDH, string tenHang, int soLuong, float donGia, float thanhTien)
+        public DTO_DatChiTiet(int maDDH, string tenHang, int soLuong, float thanhTien)
         {
             this.MaDDH = maDDH;
             this.TenHang = tenHang;
             this.SoLuong = soLuong;
-            this.DonGia = donGia;
             this.ThanhTien = thanhTien;
         }
 
@@ -23,7 +22,6 @@ namespace QLQCF.DTO
             this.MaDDH = (int)row["maDDH"];
             this.TenHang = row["tenHang"].ToString();
             this.SoLuong = (int)row["soLuong"];
-            this.DonGia = (float)Convert.ToDouble(row["donGia"].ToString());
             this.ThanhTien = (float)Convert.ToDouble(row["thanhTien"].ToString());
         }
 
@@ -32,13 +30,6 @@ namespace QLQCF.DTO
         {
             get { return thanhTien; }
             set { thanhTien = value; }
-        }
-
-        private float donGia;
-        public float DonGia
-        {
-            get { return donGia; }
-            set { donGia = value; }
         }
 
         private int soLuong;

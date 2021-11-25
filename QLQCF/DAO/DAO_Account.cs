@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,15 +23,34 @@ namespace QLQCF.DAO
 
         public bool Login(string tenDN, string matKhau)
         {
+            string matKhauMH = MaHoa(matKhau);
+
             string query = "spLogin @tenDN , @matKhau";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] {tenDN,matKhau});
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] {tenDN,matKhauMH});
 
             return result.Rows.Count > 0;
         }
+        public string MaHoa(string matKhau)
+        {
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(matKhau);
+            byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
+
+            string hasPass = "";
+            foreach (byte item in hasData)
+            {
+                hasPass += item;
+            }
+
+            hasPass.Reverse();
+            return hasPass;
+        }
         public bool UpdateAccount(string userName, string displayName, string pass, string newpass)
         {
-            int result = DataProvider.Instance.ExecuteNonQuery("exec spUpdateAccount @tenDN , @tenHT , @matKhau , @newPass", new object[] {userName, displayName, pass, newpass});
+            string passMH = MaHoa(pass);
+            string newpassMH = MaHoa(newpass);
+
+            int result = DataProvider.Instance.ExecuteNonQuery("exec spUpdateAccount @tenDN , @tenHT , @matKhau , @newPass", new object[] {userName, displayName, passMH, newpassMH});
             return result > 0;
         }
         public List<DTO_Account> GetListAcc()
@@ -81,17 +101,19 @@ namespace QLQCF.DAO
         }
         public bool ResetAccount(string tenDN)
         {
-            string query = string.Format("update Account set MatKhau = '12345' where TenDN = '{0}'", tenDN);
+            string mk = DAO_Account.Instance.MaHoa("12345");
+
+            string query = string.Format("update Account set MatKhau = '{0}' where TenDN = '{1}'", mk, tenDN);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
 
-        public List<DTO_Account> SearchAccByTenHT(string tenHT)
+        public List<DTO_Account> SearchAcc(string str)
         {
             List<DTO_Account> list = new List<DTO_Account>();
 
-            string query = string.Format("select * from Account where dbo.fuConvertToUnsign1(TenHienThi) like N'%' + dbo.fuConvertToUnsign1(N'{0}') + N'%'", tenHT);
+            string query = string.Format("exec spTimKiemAcc N'{0}'", str);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

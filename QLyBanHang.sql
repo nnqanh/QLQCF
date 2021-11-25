@@ -31,6 +31,7 @@ create table DAT
 	MaNCC int not null,
 	ThoiGian date not null,
 	TongTien numeric(15,0) default 0,
+	TinhTrang nvarchar(100),
 	foreign key (MaNDH) references NgDatHang,
 	foreign key (MaNCC) references NhaCC
 )
@@ -56,7 +57,8 @@ create table Mon
 (
 	MaMon int primary key not null,
 	TenMon nvarchar(50) not null,
-	DonGia numeric(15,0) default 0
+	DonGia numeric(15,0) default 0,
+	TinhTrang nvarchar(150)
 )
 
 create table XuatHD
@@ -92,11 +94,11 @@ create table Account
 
 -- Chèn dữ liệu
 insert into Account
-values ('PTTHa2201', N'Thanh Hà',1, '22012001'),
-	   ('TTKPhu0209', N'Kim Phú',1, '02092001'),
-	   ('NNQAnh2508', N'Quỳnh Anh',1, '25082001'),
-	   ('DNMThu0704', N'Minh Thư',1, '07042001'),
-	   ('PHManh1107', N'Hùng Mạnh',0, '11071999')
+values ('PTTHa2201', N'Thanh Hà',1, '13012420314234138112108765216110414524878123'),	-- Mật khẩu mặc định 12345
+	   ('TTKPhu0209', N'Kim Phú',1, '13012420314234138112108765216110414524878123'),
+	   ('NNQAnh2508', N'Quỳnh Anh',1, '13012420314234138112108765216110414524878123'),
+	   ('DNMThu0704', N'Minh Thư',1, '13012420314234138112108765216110414524878123'),
+	   ('PHManh1107', N'Hùng Mạnh',0, '13012420314234138112108765216110414524878123')
 
 select * from Account
 
@@ -265,19 +267,24 @@ begin
 end
 
 go
-create trigger tgInsUpdDelDatChiTiet
+alter trigger tgInsUpdDelDatChiTiet
 on DatChiTiet
 after insert, update, delete
 as
 begin
-	
-	update DatChiTiet set ThanhTien = SoLuong * (select DonGia from Hang where DatChiTiet.MaHang = Hang.MaHang)
+		update DatChiTiet set ThanhTien = SoLuong * (select DonGia from Hang where DatChiTiet.MaHang = Hang.MaHang)
 
-	update DAT set TongTien = (select SUM(ThanhTien) from DatChiTiet where DAT.MaDDH = DatChiTiet.MaDDH)
-	
+		update DAT set TongTien = (select SUM(ThanhTien) from DatChiTiet where DAT.MaDDH = DatChiTiet.MaDDH)
+end
+select * from DAT
+-- Hàm
+go
+create proc spLogin @tenDN varchar(50), @matKhau varchar(50)
+as
+begin
+	select * from Account where TenDN = @tenDN and MatKhau = @matKhau
 end
 
--- Hàm
 go
 alter function fGetMaxSoHDX()
 returns int
@@ -351,6 +358,7 @@ begin
 		set @maNCCmax = 1
 	return @maNCCmax
 end
+
 go
 create function fGetMaxMaNDH()
 returns int
@@ -363,6 +371,31 @@ begin
 	return @maNDHmax
 end
 
+go
+alter function fCheckSDT (@soDT varchar(13))
+returns int
+as
+begin
+	declare @kq int = -1, @i int, @kiTu varchar(13), @so varchar(13) = @soDT
+	set @i = LEN(@so)
+	if(@i <10)
+		return @kq
+	while @i>0
+	begin
+		set @kiTu = SUBSTRING(@so,1,1)
+		set @so = SUBSTRING(@so,2,LEN(@so)-1)
+		if (@kiTu not in ('0','1','2','3','4','5','6','7','8','9'))
+		begin
+			set @kq = -1
+			break
+		end
+		else
+			set @kq = 1
+		set @i = @i - 1
+	end
+	return @kq
+end
+select dbo.fCheckSDT('084578z7483')
 go
 alter FUNCTION fuConvertToUnsign1 ( @strInput NVARCHAR(4000) ) 
 RETURNS NVARCHAR(4000)
@@ -442,13 +475,6 @@ begin
 end
 
 go
-create proc spLogin @tenDN varchar(50), @matKhau varchar(50)
-as
-begin
-	select * from Account where TenDN = @tenDN and MatKhau = @matKhau
-end
-
-go
 alter proc spInsertXuatHD @soBan int
 as
 begin
@@ -488,17 +514,17 @@ begin
 end
 
 go
-create proc spInsertMon @tenMon nvarchar(50), @donGia numeric(15,0)
+alter proc spInsertMon @tenMon nvarchar(50), @donGia numeric(15,0), @tinhTrang nvarchar(50)
 as
 begin
 	declare @maMon int
 	set @maMon = (select dbo.fGetNewMaxMaMon())
 	insert into Mon
-	values (@maMon, @tenMon, @donGia)
+	values (@maMon, @tenMon, @donGia, @tinhTrang)
 end
 
 go 
-create proc spInsertHang @tenHang nvarchar(50), @donVi nvarchar(20), @donGia numeric(15,0)
+alter proc spInsertHang @tenHang nvarchar(50), @donVi nvarchar(20), @donGia numeric(15,0)
 as
 begin
 	declare @maHang int
@@ -506,6 +532,8 @@ begin
 	insert into Hang
 	values (@maHang, @tenHang, @donVi, @donGia)
 end
+
+select * from Hang
 
 go
 alter proc spInsertNDHang @tenNDHang nvarchar(100)
@@ -519,14 +547,17 @@ begin
 end
 
 go
-create proc spInsertNCC @tenNCC nvarchar(100), @diaChi nvarchar(200), @soDT varchar(13)
+alter proc spInsertNCC @tenNCC nvarchar(100), @diaChi nvarchar(200), @soDT varchar(13)
 as
 begin
 	declare @maNCC int
 	set @maNCC = (select dbo.fGetMaxMaNCC()) + 1
 	insert into NhaCC
-	values (@maNCC, @tenNCC, @diaChi, @soDT)
+	values (@maNCC, @tenNCC, @diaChi, @soDT)	
 end
+
+select * from NhaCC
+select * from DatChiTiet
 
 go
 create proc spInsertBan @soBan int, @tinhTrang nvarchar(30)
@@ -568,13 +599,6 @@ begin
 	begin
 		update XuatHD set SoBan = @soBan2 where SoHDX = @soHD1
 		update XuatHD set SoBan = @soBan1 where SoHDX = @soHD2
-		/*
-		select * into Bang from XuatHDChiTiet where SoHDX = @soHD2		-- lấy dữ liệu của cthd2 lưu vào bảng trung gian
-		delete XuatHDChiTiet where SoHDX = @soHD2						-- xóa dữ liệu của cthd2
-		update XuatHDChiTiet set SoHDX = @soHD2 where SoHDX = @soHD1	-- đổi cthd1 thành cthd2
-		update Bang set SoHDX = @soHD1									-- cập nhật bảng trung gian thành dữ liệu của cthd1
-		insert into XuatHDChiTiet Select * from Bang					-- thêm dữ liệu của cthd1
-		drop table Bang */
 	end
 	else if @tinhTrangBan1 = N'Trống' and @tinhTrangBan2 = N'Trống' -- chuyển 2 bàn trống
 		return
@@ -615,13 +639,15 @@ begin
 end
 
 go
-create proc spLayDATtuThoiGian @tuNgay date, @denNgay date
+alter proc spLayDATtuThoiGian @tuNgay date, @denNgay date
 as
 begin
-	select MaDDH, TenNDH, TenNCC, ThoiGian, TongTien from DAT join NgDatHang on DAT.MaNDH = NgDatHang.MaNDH
+	select MaDDH, TinhTrang, TenNDH, ThoiGian, TongTien, TenNCC  from DAT join NgDatHang on DAT.MaNDH = NgDatHang.MaNDH
 					  join NhaCC on DAT.MaNCC = NhaCC.MaNCC
 	where ThoiGian between @tuNgay and @denNgay
 end
+
+exec spLayDATtuThoiGian '10/01/2021' , '11/30/2021'
 
 go
 alter proc spGetListBillByDate @tuNgay date, @denNgay date
@@ -696,9 +722,59 @@ select * from XuatHD
 select * from DatChiTiet
 select * from DAT
 
-select DISTINCT TinhTrang from Ban
+insert into Mon values(1,N'Trà đào', 18000, N'Không bán')
+
+select DISTINCT TinhTrang from Mon
 
 Select TenHang, SoLuong, DonGia, ThanhTien from DatChiTiet join Hang on DatChiTiet.MaHang = Hang.MaHang where MaDDH = 1
 
 select MaDDH, TenNDH, TenNCC, ThoiGian, TongTien from DAT join NgDatHang on DAT.MaNDH = NgDatHang.MaNDH join NhaCC on DAT.MaNCC = NhaCC.MaNCC
 insert into DatChiTiet(MaDDH,MaHang,SoLuong) values(6,1,3)
+
+go
+create proc spTimKiemMon @str nvarchar(100)
+as
+begin
+	select * from Mon where (dbo.fuConvertToUnsign1(TenMon) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+							or (dbo.fuConvertToUnsign1(MaMon) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+							or (dbo.fuConvertToUnsign1(DonGia) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+							or (dbo.fuConvertToUnsign1(TinhTrang) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+end
+
+go
+create proc spTimKiemAcc @str nvarchar(100)
+as
+begin
+	select * from Account where (dbo.fuConvertToUnsign1(TenDN) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(TenHienThi) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(Loai) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+end
+
+go
+create proc spTimKiemHang @str nvarchar(100)
+as
+begin
+	select * from Hang where (dbo.fuConvertToUnsign1(TenHang) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(DonVi) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(DonGia) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+end
+
+go
+create proc spTimKiemNDH @str nvarchar(100)
+as
+begin
+	select * from NgDatHang where (dbo.fuConvertToUnsign1(TenNDH) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(DiaChi) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+end
+
+go
+create proc spTimKiemNCC @str nvarchar(100)
+as
+begin
+	select * from NhaCC where (dbo.fuConvertToUnsign1(TenNCC) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(DiaChi) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+								or (dbo.fuConvertToUnsign1(SDT) like N'%' + dbo.fuConvertToUnsign1(@str) + N'%' )
+end
+
+exec spTimKiemNCC N'á'
+

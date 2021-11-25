@@ -43,6 +43,7 @@
             this.txbTHT = new System.Windows.Forms.TextBox();
             this.lbTHT = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
+            this.cbTenDN = new System.Windows.Forms.ComboBox();
             this.lbTDN = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnXoaTK = new System.Windows.Forms.Button();
@@ -85,14 +86,12 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dtgvMon = new System.Windows.Forms.DataGridView();
             this.tpNVL = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnTimkiemban = new System.Windows.Forms.Button();
-            this.txbTimkiemban = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.cbTinhTrangBan = new System.Windows.Forms.ComboBox();
             this.lbDonvi = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.txbSoban = new System.Windows.Forms.TextBox();
+            this.nmSoBan = new System.Windows.Forms.NumericUpDown();
             this.lbSoban = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnXoaban = new System.Windows.Forms.Button();
@@ -102,8 +101,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtGvBan = new System.Windows.Forms.DataGridView();
             this.tctQuanly = new System.Windows.Forms.TabControl();
-            this.cbTenDN = new System.Windows.Forms.ComboBox();
-            this.cbTinhTrangBan = new System.Windows.Forms.ComboBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cbbTinhTrangMon = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tpHDN.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -129,14 +129,15 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMon)).BeginInit();
             this.tpNVL.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSoBan)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGvBan)).BeginInit();
             this.tctQuanly.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbExit
@@ -241,6 +242,13 @@
             this.panel29.Controls.Add(this.lbTDN);
             resources.ApplyResources(this.panel29, "panel29");
             this.panel29.Name = "panel29";
+            // 
+            // cbTenDN
+            // 
+            this.cbTenDN.BackColor = System.Drawing.Color.LavenderBlush;
+            resources.ApplyResources(this.cbTenDN, "cbTenDN");
+            this.cbTenDN.FormattingEnabled = true;
+            this.cbTenDN.Name = "cbTenDN";
             // 
             // lbTDN
             // 
@@ -419,6 +427,7 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.panel4);
             this.panel7.Controls.Add(this.panel21);
             this.panel7.Controls.Add(this.panel22);
             this.panel7.Controls.Add(this.panel23);
@@ -480,6 +489,7 @@
             this.txbMamon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.txbMamon, "txbMamon");
             this.txbMamon.Name = "txbMamon";
+            this.txbMamon.ReadOnly = true;
             // 
             // lbMamon
             // 
@@ -546,30 +556,10 @@
             // 
             this.tpNVL.BackColor = System.Drawing.Color.LavenderBlush;
             resources.ApplyResources(this.tpNVL, "tpNVL");
-            this.tpNVL.Controls.Add(this.panel4);
             this.tpNVL.Controls.Add(this.panel3);
             this.tpNVL.Controls.Add(this.panel2);
             this.tpNVL.Controls.Add(this.panel1);
             this.tpNVL.Name = "tpNVL";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnTimkiemban);
-            this.panel4.Controls.Add(this.txbTimkiemban);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
-            // 
-            // btnTimkiemban
-            // 
-            resources.ApplyResources(this.btnTimkiemban, "btnTimkiemban");
-            this.btnTimkiemban.ForeColor = System.Drawing.Color.White;
-            this.btnTimkiemban.Name = "btnTimkiemban";
-            this.btnTimkiemban.UseVisualStyleBackColor = true;
-            // 
-            // txbTimkiemban
-            // 
-            resources.ApplyResources(this.txbTimkiemban, "txbTimkiemban");
-            this.txbTimkiemban.Name = "txbTimkiemban";
             // 
             // panel3
             // 
@@ -585,6 +575,14 @@
             resources.ApplyResources(this.panel20, "panel20");
             this.panel20.Name = "panel20";
             // 
+            // cbTinhTrangBan
+            // 
+            this.cbTinhTrangBan.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbTinhTrangBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbTinhTrangBan, "cbTinhTrangBan");
+            this.cbTinhTrangBan.FormattingEnabled = true;
+            this.cbTinhTrangBan.Name = "cbTinhTrangBan";
+            // 
             // lbDonvi
             // 
             resources.ApplyResources(this.lbDonvi, "lbDonvi");
@@ -592,17 +590,27 @@
             // 
             // panel17
             // 
-            this.panel17.Controls.Add(this.txbSoban);
+            this.panel17.Controls.Add(this.nmSoBan);
             this.panel17.Controls.Add(this.lbSoban);
             resources.ApplyResources(this.panel17, "panel17");
             this.panel17.Name = "panel17";
             // 
-            // txbSoban
+            // nmSoBan
             // 
-            this.txbSoban.BackColor = System.Drawing.Color.LavenderBlush;
-            this.txbSoban.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.txbSoban, "txbSoban");
-            this.txbSoban.Name = "txbSoban";
+            this.nmSoBan.BackColor = System.Drawing.Color.LavenderBlush;
+            this.nmSoBan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.nmSoBan, "nmSoBan");
+            this.nmSoBan.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            -2147483648});
+            this.nmSoBan.Name = "nmSoBan";
+            this.nmSoBan.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lbSoban
             // 
@@ -675,19 +683,25 @@
             this.tctQuanly.Name = "tctQuanly";
             this.tctQuanly.SelectedIndex = 0;
             // 
-            // cbTenDN
+            // panel4
             // 
-            this.cbTenDN.BackColor = System.Drawing.Color.LavenderBlush;
-            resources.ApplyResources(this.cbTenDN, "cbTenDN");
-            this.cbTenDN.FormattingEnabled = true;
-            this.cbTenDN.Name = "cbTenDN";
+            this.panel4.Controls.Add(this.cbbTinhTrangMon);
+            this.panel4.Controls.Add(this.label1);
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
             // 
-            // cbTinhTrangBan
+            // cbbTinhTrangMon
             // 
-            this.cbTinhTrangBan.BackColor = System.Drawing.Color.LavenderBlush;
-            resources.ApplyResources(this.cbTinhTrangBan, "cbTinhTrangBan");
-            this.cbTinhTrangBan.FormattingEnabled = true;
-            this.cbTinhTrangBan.Name = "cbTinhTrangBan";
+            this.cbbTinhTrangMon.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbbTinhTrangMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbbTinhTrangMon, "cbbTinhTrangMon");
+            this.cbbTinhTrangMon.FormattingEnabled = true;
+            this.cbbTinhTrangMon.Name = "cbbTinhTrangMon";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // FQuanlyBan
             // 
@@ -731,17 +745,18 @@
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvMon)).EndInit();
             this.tpNVL.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmSoBan)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGvBan)).EndInit();
             this.tctQuanly.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -795,14 +810,10 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dtgvMon;
         private System.Windows.Forms.TabPage tpNVL;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnTimkiemban;
-        private System.Windows.Forms.TextBox txbTimkiemban;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Label lbDonvi;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.TextBox txbSoban;
         private System.Windows.Forms.Label lbSoban;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnXoaban;
@@ -823,5 +834,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ComboBox cbTenDN;
         private System.Windows.Forms.ComboBox cbTinhTrangBan;
+        private System.Windows.Forms.NumericUpDown nmSoBan;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox cbbTinhTrangMon;
+        private System.Windows.Forms.Label label1;
     }
 }
