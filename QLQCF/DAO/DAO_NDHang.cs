@@ -73,5 +73,11 @@ namespace QLQCF.DAO
 
             return list;
         }
+        public bool CheckDatByMaNDH(int maNDH)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from DAT where MaNDH = " + maNDH);
+            return dem <= 0;
+
+        }
     }
 }

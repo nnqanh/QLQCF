@@ -75,6 +75,11 @@ namespace QLQCF.DAO
 
             return list;
         }
+        public bool CheckHDByMaMon(int maMon)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from XuatHDChiTiet where MaMon = " + maMon);
+            return dem <= 0;
 
+        }
     }
 }

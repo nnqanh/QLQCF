@@ -24,11 +24,6 @@ namespace QLQCF
         public FQuanlyBan()
         {
             InitializeComponent();
-            Load();
-        }
-        #region methods
-        void Load()
-        {
             dtgvMon.DataSource = MonList;
             dtGvBan.DataSource = BanList;
             dtgvTK.DataSource = AccountList;
@@ -43,6 +38,7 @@ namespace QLQCF
             AddMonBinding();
             AddAccountBinding();
         }
+        #region methods
         
         void LoadAccount()
         {
@@ -76,7 +72,7 @@ namespace QLQCF
 
         void AddBanBinding()
         {
-            txbSoban.DataBindings.Add(new Binding("Text", dtGvBan.DataSource, "SoBan", true, DataSourceUpdateMode.Never));
+            nmSoBan.DataBindings.Add(new Binding("Text", dtGvBan.DataSource, "SoBan", true, DataSourceUpdateMode.Never));
             cbTinhTrangBan.DataBindings.Add(new Binding("Text", dtGvBan.DataSource, "TinhTrang", true, DataSourceUpdateMode.Never));
         }
         void AddMonBinding()
@@ -161,17 +157,27 @@ namespace QLQCF
         private void btnXoaMon_Click(object sender, EventArgs e)
         {
             int maMon = Convert.ToInt32(txbMamon.Text);
-
-            if (DAO_Mon.Instance.DeleteMon(maMon))
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa món này không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Xóa món thành công");
-                LoadMonList();
-                if (deleteMon != null)
-                    deleteMon(this, new EventArgs());
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi khi xóa món");
+                if (DAO_Mon.Instance.CheckHDByMaMon(maMon))
+                {
+                    if (DAO_Mon.Instance.DeleteMon(maMon))
+                    {
+                        MessageBox.Show("Xóa món thành công");
+                        LoadMonList();
+                        if (deleteMon != null)
+                            deleteMon(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi xóa món");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bạn không thể xóa món đã có trong hóa đơn đang bán");
+                    return;
+                }
             }
         }
 
@@ -213,7 +219,7 @@ namespace QLQCF
 
         private void btnThemBan_Click(object sender, EventArgs e)
         {
-            int soBan = Convert.ToInt32(txbSoban.Text);
+            int soBan = Convert.ToInt32(nmSoBan.Text);
             string tinhTrang = cbTinhTrangBan.Text;
 
             if (DAO_Table.Instance.InsertBan(soBan, tinhTrang))
@@ -231,7 +237,7 @@ namespace QLQCF
 
         private void btnSuaban_Click(object sender, EventArgs e)
         {
-            int soBan = Convert.ToInt32(txbSoban.Text);
+            int soBan = Convert.ToInt32(nmSoBan.Text);
             string tinhTrang = cbTinhTrangBan.Text;
 
             if (DAO_Table.Instance.UpdateBan(soBan, tinhTrang))
@@ -249,18 +255,28 @@ namespace QLQCF
 
         private void btnXoaban_Click(object sender, EventArgs e)
         {
-            int soBan = Convert.ToInt32(txbSoban.Text);
-
-            if (DAO_Table.Instance.DeleteBan(soBan))
+            int soBan = Convert.ToInt32(nmSoBan.Text);
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa bàn "+soBan, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Xóa bàn thành công");
-                LoadBanList();
-                if (deleteBan != null)
-                    deleteBan(this, new EventArgs());
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi khi xóa bàn");
+                if (DAO_Table.Instance.CheckHDXbySoBan(soBan))
+                {
+                    if (DAO_Table.Instance.DeleteBan(soBan))
+                    {
+                        MessageBox.Show("Xóa bàn thành công");
+                        LoadBanList();
+                        if (deleteBan != null)
+                            deleteBan(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Có lỗi khi xóa bàn");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bạn không thể xóa bàn đã có hóa đơn");
+                    return;
+                }
             }
         }
 
@@ -337,14 +353,18 @@ namespace QLQCF
         }
         void ResetPass(string tenDN)
         {
-            if (DAO_Account.Instance.ResetAccount(tenDN))
-            {
-                MessageBox.Show("Đặt lại mật khẩu thành công");
+            if (MessageBox.Show("Bạn có chắc chắn muốn reset lại mật khẩu không?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {   
+                if (DAO_Account.Instance.ResetAccount(tenDN))
+                {
+                    MessageBox.Show("Đặt lại mật khẩu thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Đặt lại mật khẩu thất bại");
+                }
             }
-            else
-            {
-                MessageBox.Show("Đặt lại mật khẩu thất bại");
-            }
+            
             LoadAccount();
         }
         private void btnXemTK_Click(object sender, EventArgs e)
@@ -368,7 +388,6 @@ namespace QLQCF
 
             UpdateAccount(tenDN, tenHT, loai);
         }
-
         private void btnXoaTK_Click(object sender, EventArgs e)
         {
             string tenDN = cbTenDN.Text;
@@ -380,10 +399,9 @@ namespace QLQCF
             string tenDN = cbTenDN.Text;
             ResetPass(tenDN);
         }
-
-
         #endregion
 
+        #region HoaDon
         void LoadDateTimePickerBill()
         {
             DateTime today = DateTime.Now;
@@ -410,7 +428,6 @@ namespace QLQCF
                 lsvBillInfo.Items.Add(lsvItem);
             }
         }
-
         private void dtgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int numrow;
@@ -419,5 +436,6 @@ namespace QLQCF
             lsvBillInfo.Tag = soHDX;
             ShowBillInfo(soHDX);
         }
+        #endregion
     }
 }

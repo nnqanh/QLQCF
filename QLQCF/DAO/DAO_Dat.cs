@@ -56,5 +56,11 @@ namespace QLQCF.DAO
 
             return result > 0;
         }
+        public bool CheckDatByMaNCC(int maNCC)
+        {
+            int dem = (int)DataProvider.Instance.ExecuteScalar("select COUNT(*) from DAT where MaNCC = " + maNCC);
+            return dem <= 0;
+
+        }
     }
 }
