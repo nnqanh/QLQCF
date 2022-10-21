@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B41FEF73-1565-4FE1-83D9-3058C5ECAE74}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QLQCF</RootNamespace>
+    <AssemblyName>QLQCF</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\DAO_Account.cs" />
+    <Compile Include="DAO\DAO_Bill.cs" />
+    <Compile Include="DAO\DAO_BillInfo.cs" />
+    <Compile Include="DAO\DAO_Dat.cs" />
+    <Compile Include="DAO\DAO_Hang.cs" />
+    <Compile Include="DAO\DAO_Menu.cs" />
+    <Compile Include="DAO\DAO_DatChiTiet.cs" />
+    <Compile Include="DAO\DAO_Mon.cs" />
+    <Compile Include="DAO\DAO_NCC.cs" />
+    <Compile Include="DAO\DAO_NDHang.cs" />
+    <Compile Include="DAO\DAO_Table.cs" />
+    <Compile Include="DAO\DAO_TinhTrang.cs" />
+    <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DTO\DTO_Account.cs" />
+    <Compile Include="DTO\DTO_Bill.cs" />
+    <Compile Include="DTO\DTO_BillInfo.cs" />
+    <Compile Include="DTO\DTO_Dat.cs" />
+    <Compile Include="DTO\DTO_Hang.cs" />
+    <Compile Include="DTO\DTO_Menu.cs" />
+    <Compile Include="DTO\DTO_DatChiTiet.cs" />
+    <Compile Include="DTO\DTO_Mon.cs" />
+    <Compile Include="DTO\DTO_NCC.cs" />
+    <Compile Include="DTO\DTO_NDHang.cs" />
+    <Compile Include="DTO\DTO_Table.cs" />
+    <Compile Include="DTO\DTO_TinhTrang.cs" />
+    <Compile Include="Form\FAccountProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FAccountProfile.Designer.cs">
+      <DependentUpon>FAccountProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FChinh.Designer.cs">
+      <DependentUpon>FChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FDangnhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FDangnhap.Designer.cs">
+      <DependentUpon>FDangnhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FQuanlymua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FQuanlymua.Designer.cs">
+      <DependentUpon>FQuanlymua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FQuanlyBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FQuanlyBan.Designer.cs">
+      <DependentUpon>FQuanlyBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form\FAccountProfile.resx">
+      <DependentUpon>FAccountProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FChinh.resx">
+      <DependentUpon>FChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FDangnhap.resx">
+      <DependentUpon>FDangnhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FQuanlyBan.resx">
+      <DependentUpon>FQuanlyBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FQuanlyBan.vi-VN.resx">
+      <DependentUpon>FQuanlyBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FQuanlyBan.vi.resx">
+      <DependentUpon>FQuanlyBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FQuanlymua.resx">
+      <DependentUpon>FQuanlymua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\88-885453_login-white-on-clear-user-icon-removebg-preview.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
