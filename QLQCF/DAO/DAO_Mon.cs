@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QLQCF.DAO
 {
@@ -24,7 +25,7 @@ namespace QLQCF.DAO
         {
             List<DTO_Mon> list = new List<DTO_Mon> ();
 
-            string query = "select * from Mon where TinhTrang = N'Đang bán'";
+            string query = "select * from Mon where TinhTrang = 0";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             

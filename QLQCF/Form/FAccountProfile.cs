@@ -40,11 +40,15 @@ namespace QLQCF
 
             if (!matKhauMoi.Equals(nhapLaiMK))
             {
-                MessageBox.Show("Vui lòng nhập lại mật khẩu đúng với mật khẩu mới!");
+                MessageBox.Show("Cập nhật mật khẩu thất bại");
             }
             else
             {
-                if (DAO_Account.Instance.UpdateAccount(tenDN,tenHT,matKhau,matKhauMoi))
+                if (matKhau == matKhauMoi)
+                {
+                    MessageBox.Show("Cập nhật mật khẩu thất bại");
+                }
+                else if (DAO_Account.Instance.UpdateAccount(tenDN,tenHT,matKhau,matKhauMoi))
                 {
                     MessageBox.Show("Cập nhật thành công");
                     if (updateAccount != null)
@@ -52,7 +56,7 @@ namespace QLQCF
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập đúng mật khẩu");
+                    MessageBox.Show("Cập nhật mật khẩu thất bại");
                 }
             }    
         }

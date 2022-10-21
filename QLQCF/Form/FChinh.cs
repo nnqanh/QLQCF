@@ -215,7 +215,11 @@ namespace QLQCF
             int maMon = (cbMon.SelectedItem as DTO_Mon).MaMon;
             int soLuong = (int)nmSoLuong.Value;
 
-            if (soHDX == -1)
+            if (soLuong == 0)
+            {
+                MessageBox.Show("Vui lòng nhập số lượng");
+            }
+            else if (soHDX == -1)
             {
                 DAO_Bill.Instance.InsertXuatHD(table.SoBan);
                 DAO_BillInfo.Instance.InsertXuatHDChiTiet( DAO_Bill.Instance.GetMaxSoHDX() ,maMon, soLuong);
@@ -225,7 +229,7 @@ namespace QLQCF
                 DAO_BillInfo.Instance.InsertXuatHDChiTiet(soHDX, maMon, soLuong);
             }
 
-            ShowBill(table.SoBan);
+            // ShowBill(table.SoBan);
             LoadTable();
         }
 

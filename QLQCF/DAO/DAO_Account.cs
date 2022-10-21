@@ -29,6 +29,8 @@ namespace QLQCF.DAO
 
             DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] {tenDN,matKhauMH});
 
+            //DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { tenDN, matKhau });
+
             return result.Rows.Count > 0;
         }
         public string MaHoa(string matKhau)
@@ -82,13 +84,14 @@ namespace QLQCF.DAO
         {
             string query = string.Format("insert Account (TenDN, TenHienThi, Loai) values ('{0}', N'{1}',{2})", tenDN, tenHT, loai);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
+            ResetAccount(tenDN);
 
             return result > 0;
         }
         public bool UpdateAccount(string tenDN, string tenHT, int loai)
         {
             string query = string.Format("update Account set TenHienThi = N'{0}', Loai = {1} where TenDN = '{2}'", tenHT, loai, tenDN);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);           
 
             return result > 0;
         }
@@ -101,7 +104,8 @@ namespace QLQCF.DAO
         }
         public bool ResetAccount(string tenDN)
         {
-            string mk = DAO_Account.Instance.MaHoa("12345");
+            string MkMacDinh = "12345";
+            string mk = DAO_Account.Instance.MaHoa(MkMacDinh);
 
             string query = string.Format("update Account set MatKhau = '{0}' where TenDN = '{1}'", mk, tenDN);
             int result = DataProvider.Instance.ExecuteNonQuery(query);

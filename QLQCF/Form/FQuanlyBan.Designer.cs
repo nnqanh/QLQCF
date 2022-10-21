@@ -43,7 +43,7 @@
             this.txbTHT = new System.Windows.Forms.TextBox();
             this.lbTHT = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
-            this.cbTenDN = new System.Windows.Forms.ComboBox();
+            this.txbTDN = new System.Windows.Forms.TextBox();
             this.lbTDN = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnXoaTK = new System.Windows.Forms.Button();
@@ -69,6 +69,9 @@
             this.btnTKMon = new System.Windows.Forms.Button();
             this.txbTKMon = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cbbTinhTrangMon = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.nUDDongia = new System.Windows.Forms.NumericUpDown();
             this.lbDongia = new System.Windows.Forms.Label();
@@ -101,9 +104,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtGvBan = new System.Windows.Forms.DataGridView();
             this.tctQuanly = new System.Windows.Forms.TabControl();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.cbbTinhTrangMon = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tpHDN.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -121,6 +121,7 @@
             this.tpNDH.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDongia)).BeginInit();
             this.panel22.SuspendLayout();
@@ -137,7 +138,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGvBan)).BeginInit();
             this.tctQuanly.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbExit
@@ -238,17 +238,17 @@
             // 
             // panel29
             // 
-            this.panel29.Controls.Add(this.cbTenDN);
+            this.panel29.Controls.Add(this.txbTDN);
             this.panel29.Controls.Add(this.lbTDN);
             resources.ApplyResources(this.panel29, "panel29");
             this.panel29.Name = "panel29";
             // 
-            // cbTenDN
+            // txbTDN
             // 
-            this.cbTenDN.BackColor = System.Drawing.Color.LavenderBlush;
-            resources.ApplyResources(this.cbTenDN, "cbTenDN");
-            this.cbTenDN.FormattingEnabled = true;
-            this.cbTenDN.Name = "cbTenDN";
+            this.txbTDN.BackColor = System.Drawing.Color.LavenderBlush;
+            this.txbTDN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.txbTDN, "txbTDN");
+            this.txbTDN.Name = "txbTDN";
             // 
             // lbTDN
             // 
@@ -434,6 +434,26 @@
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.cbbTinhTrangMon);
+            this.panel4.Controls.Add(this.label1);
+            resources.ApplyResources(this.panel4, "panel4");
+            this.panel4.Name = "panel4";
+            // 
+            // cbbTinhTrangMon
+            // 
+            this.cbbTinhTrangMon.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbbTinhTrangMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbbTinhTrangMon, "cbbTinhTrangMon");
+            this.cbbTinhTrangMon.FormattingEnabled = true;
+            this.cbbTinhTrangMon.Name = "cbbTinhTrangMon";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // panel21
             // 
             this.panel21.Controls.Add(this.nUDDongia);
@@ -611,6 +631,7 @@
             0,
             0,
             0});
+            this.nmSoBan.ValueChanged += new System.EventHandler(this.nmSoBan_ValueChanged);
             // 
             // lbSoban
             // 
@@ -683,26 +704,6 @@
             this.tctQuanly.Name = "tctQuanly";
             this.tctQuanly.SelectedIndex = 0;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.cbbTinhTrangMon);
-            this.panel4.Controls.Add(this.label1);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
-            // 
-            // cbbTinhTrangMon
-            // 
-            this.cbbTinhTrangMon.BackColor = System.Drawing.Color.LavenderBlush;
-            this.cbbTinhTrangMon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbbTinhTrangMon, "cbbTinhTrangMon");
-            this.cbbTinhTrangMon.FormattingEnabled = true;
-            this.cbbTinhTrangMon.Name = "cbbTinhTrangMon";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // FQuanlyBan
             // 
             resources.ApplyResources(this, "$this");
@@ -734,6 +735,8 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDongia)).EndInit();
@@ -755,8 +758,6 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGvBan)).EndInit();
             this.tctQuanly.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -832,11 +833,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ComboBox cbTenDN;
         private System.Windows.Forms.ComboBox cbTinhTrangBan;
         private System.Windows.Forms.NumericUpDown nmSoBan;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox cbbTinhTrangMon;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txbTDN;
     }
 }

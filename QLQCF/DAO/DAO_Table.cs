@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QLQCF.DAO
 {
@@ -25,10 +27,30 @@ namespace QLQCF.DAO
 
         public void SwitchTable(int soBan1, int soBan2)
         {
+            if (soBan1 == soBan2)
+            {
+                MessageBox.Show("Không thể chuyển bàn trùng nhau");
+                return;
+            }
+            if (soBan2 == 0)
+            {
+                MessageBox.Show("Không thể chuyển sang bàn Bán mang về");
+                return;
+            }
             DataProvider.Instance.ExecuteQuery("spSwitchTable @soBan1 , @soBan2", new object[] {soBan1, soBan2});
         }
         public void GopBan(int soBan1, int soBan2)
         {
+            if (soBan1 == soBan2)
+            {
+                MessageBox.Show("Không thể gộp bàn trùng nhau");
+                return;
+            }
+            if (soBan2 == 0)
+            {
+                MessageBox.Show("Không thể gộp sang bàn Bán mang về");
+                return;
+            }
             DataProvider.Instance.ExecuteQuery("spGopBan @soBan1 , @soBan2", new object[] { soBan1, soBan2 });
         }
 
@@ -50,7 +72,7 @@ namespace QLQCF.DAO
         public DTO_Table LayTinhTrangBySoBan(int soBan)
         {
             DTO_Table tt = null;
-            string query = "select * from Ban where SoBan = " + soBan;
+            string query = "select TinhTrang from Ban where SoBan = " + soBan;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {

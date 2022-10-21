@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -131,44 +132,66 @@ namespace QLQCF
 
         private void btnThemNVL_Click(object sender, EventArgs e)
         {
-            string tenHang = txbTenHang.Text;
-            string donVi = txbDonVi.Text;
-            float donGia = (float)nUDDongia.Value;
-
-            if (DAO_Hang.Instance.InsertHang(tenHang, donVi, donGia))
+            if (txbTenHang.TextLength == 0)
             {
-                MessageBox.Show("Thêm nguyên vật liệu thành công");
-                LoadHangList();
-                if (insertHang != null)
-                    insertHang(this, new EventArgs());
+                MessageBox.Show("Không thể thêm nguyên vật liệu");
+            }
+            else if (txbDonVi.TextLength == 0)
+            {
+                MessageBox.Show("Không thể thêm nguyên vật liệu");
             }
             else
             {
-                MessageBox.Show("Có lỗi khi thêm nguyên vật liệu");
+                string tenHang = txbTenHang.Text;
+                string donVi = txbDonVi.Text;
+                float donGia = (float)nUDDongia.Value;
+
+                if (DAO_Hang.Instance.InsertHang(tenHang, donVi, donGia))
+                {
+                    MessageBox.Show("Thêm nguyên vật liệu thành công");
+                    LoadHangList();
+                    if (insertHang != null)
+                        insertHang(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Không thể thêm nguyên vật liệu");
+                }
+                LoadNVL();
             }
-            LoadNVL();
         }
 
         private void btnSuaNVL_Click(object sender, EventArgs e)
         {
-            string tenHang = txbTenHang.Text;
-            string donVi = txbDonVi.Text;
-            float donGia = (float)nUDDongia.Value;
-            int maHang = Convert.ToInt32(txbMahang.Text);
-
-            if (DAO_Hang.Instance.UpdateHang(tenHang, donVi, donGia, maHang))
+            if (txbTenHang.TextLength == 0)
             {
-                MessageBox.Show("Sửa nguyên vật liệu thành công");
-                LoadHangList();
-                if (updateHang != null)
-                    updateHang(this, new EventArgs());
+                MessageBox.Show("Không thể sửa nguyên vật liệu");
+            }
+            else if (txbDonVi.TextLength == 0)
+            {
+                MessageBox.Show("Không thể sửa nguyên vật liệu");
             }
             else
             {
-                MessageBox.Show("Có lỗi khi sửa nguyên vật liệu");
-            }
-            LoadNVL();
-            LoadListDATByDate(dtpkTuNgay.Value, dtpkDenNgay.Value);
+                string tenHang = txbTenHang.Text;
+                string donVi = txbDonVi.Text;
+                float donGia = (float)nUDDongia.Value;
+                int maHang = Convert.ToInt32(txbMahang.Text);
+
+                if (DAO_Hang.Instance.UpdateHang(tenHang, donVi, donGia, maHang))
+                {
+                    MessageBox.Show("Sửa nguyên vật liệu thành công");
+                    LoadHangList();
+                    if (updateHang != null)
+                        updateHang(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Không thể sửa nguyên vật liệu");
+                }
+                LoadNVL();
+                LoadListDATByDate(dtpkTuNgay.Value, dtpkDenNgay.Value);
+            }    
         }
 
         private void btnXoaNVL_Click(object sender, EventArgs e)
@@ -344,57 +367,103 @@ namespace QLQCF
 
         private void btnThemNCC_Click(object sender, EventArgs e)
         {
-            string tenNCC = txbTenNCC.Text;
-            string diaChi = txbDiachiNCC.Text;
-            string soDT = txbSDT.Text;
-            if(DAO_NCC.Instance.CheckNCC(tenNCC, diaChi))
+            if (txbTenNCC.TextLength == 0)
             {
-                if (DAO_NCC.Instance.InsertNCC(tenNCC, diaChi, soDT))
-                {
-                    MessageBox.Show("Thêm nhà cung cấp thành công");
-                    LoadNCCList();
-                    if (insertNCC != null)
-                        insertNCC(this, new EventArgs());
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi khi thêm nhà cung cấp");
-                }
+                MessageBox.Show("Không thể thêm nhà cung cấp");
+            }
+            else if (txbDiachiNCC.TextLength == 0)
+            {
+                MessageBox.Show("Không thể thêm nhà cung cấp");
+            }
+            else if (txbSDT.TextLength != 10) 
+            {
+                MessageBox.Show("Không thể thêm nhà cung cấp");
+            }
+            else if (txbSDT.Text[0] != '0')
+            {
+                MessageBox.Show("Không thể thêm nhà cung cấp");
             }
             else
             {
-                MessageBox.Show("Nhà cung cấp này đã tồn tại");
-                return;
-            }
-            LoadTenNCC();
+                string tenNCC = txbTenNCC.Text;
+                string diaChi = txbDiachiNCC.Text;
+                string soDT = txbSDT.Text;
+                if (DAO_NCC.Instance.CheckNCC(tenNCC, diaChi))
+                {
+                    if (DAO_NCC.Instance.CheckSDT(soDT))
+                    {
+                        if (DAO_NCC.Instance.InsertNCC(tenNCC, diaChi, soDT))
+                        {
+                            MessageBox.Show("Thêm nhà cung cấp thành công");
+                            LoadNCCList();
+                            if (insertNCC != null)
+                                insertNCC(this, new EventArgs());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thể thêm nhà cung cấp");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Số điện thoại không phù hợp");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nhà cung cấp này đã tồn tại");
+                    return;
+                }
+                LoadTenNCC();
+            }    
         }
         private void btnSuaNCC_Click(object sender, EventArgs e)
         {
-            string tenNCC = txbTenNCC.Text;
-            string diaChi = txbDiachiNCC.Text;
-            string soDT = txbSDT.Text;
-            int maNCC = Convert.ToInt32(txbMaNCC.Text);  
-
-            if (DAO_NCC.Instance.CheckSDT(soDT))
+            if (txbTenNCC.TextLength == 0)
             {
-                if (DAO_NCC.Instance.UpdateNCC(tenNCC, diaChi, soDT, maNCC))
-                {
-                    MessageBox.Show("Sửa nhà cung cấp thành công");
-                    LoadNCCList();
-                    if (updateNCC != null)
-                        updateNCC(this, new EventArgs());
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi khi sửa nhà cung cấp");
-                }
+                MessageBox.Show("Không thể sửa nhà cung cấp");
+            }
+            else if (txbDiachiNCC.TextLength == 0)
+            {
+                MessageBox.Show("Không thể sửa nhà cung cấp");
+            }
+            else if (txbSDT.TextLength != 10)
+            {
+                MessageBox.Show("Không thể sửa nhà cung cấp");
+            }
+            else if (txbSDT.Text[0] != '0')
+            {
+                MessageBox.Show("Không thể sửa nhà cung cấp");
             }
             else
             {
-                MessageBox.Show("Số điện thoại không phù hợp");
-                return;
-            }
-            LoadTenNCC();
+                string tenNCC = txbTenNCC.Text;
+                string diaChi = txbDiachiNCC.Text;
+                string soDT = txbSDT.Text;
+                int maNCC = Convert.ToInt32(txbMaNCC.Text);
+
+                if (DAO_NCC.Instance.CheckSDT(soDT))
+                {
+                    if (DAO_NCC.Instance.UpdateNCC(tenNCC, diaChi, soDT, maNCC))
+                    {
+                        MessageBox.Show("Sửa nhà cung cấp thành công");
+                        LoadNCCList();
+                        if (updateNCC != null)
+                            updateNCC(this, new EventArgs());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể sửa nhà cung cấp");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Số điện thoại không phù hợp");
+                    return;
+                }
+                LoadTenNCC();
+            }    
         }
 
         private void btnNCC_Click(object sender, EventArgs e)

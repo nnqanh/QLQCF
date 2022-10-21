@@ -21,7 +21,7 @@ namespace QLQCF.DAO
 
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=DESKTOP-77ACPM6\THANHHA;Initial Catalog=QLCF;Integrated Security=True";
+        private string connectionSTR = @"Data Source=DESKTOP-7CA3BR5;Initial Catalog=QLCF;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

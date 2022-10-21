@@ -22,7 +22,7 @@ namespace QLQCF.DAO
         {
             List<DTO_Menu> listMenu = new List<DTO_Menu>();
 
-            string query = "Select TenMon, SoLuong, DonGia, ThanhTien from XuatHDChiTiet join XuatHD on XuatHDChiTiet.SoHDX = XuatHD.SoHDX join Mon on XuatHDChiTiet.MaMon = Mon.MaMon where TinhTrang = 0 and XuatHD.SoHDX = " + id;
+            string query = "Select TenMon, SoLuong, DonGia, ThanhTien from XuatHDChiTiet join XuatHD on XuatHDChiTiet.SoHDX = XuatHD.SoHDX join Mon on XuatHDChiTiet.MaMon = Mon.MaMon where Mon.TinhTrang = 0 and XuatHD.SoHDX = " + id;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)

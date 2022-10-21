@@ -91,6 +91,11 @@ create table Account
 	Loai int default 0, -- 0: nhân viên, 1: quản lý
 	MatKhau varchar(50) not null default 12345
 )
+select * from Account
+
+update Account
+set MatKhau = '22012001'
+where TenDN = 'PTTHa2201'
 
 -- Chèn dữ liệu
 insert into Account
@@ -169,7 +174,7 @@ select * from XuatHD
 select * from XuatHDChiTiet
 -- Trigger
 go
-alter trigger tgUpdateXuatHDChiTiet
+create trigger tgUpdateXuatHDChiTiet
 on XuatHDChiTiet
 after insert, update
 as
@@ -245,7 +250,7 @@ begin
 end
 
 go
-alter trigger tgDeleteXuatHDChiTiet
+create trigger tgDeleteXuatHDChiTiet
 on XuatHDChiTiet
 after delete
 as
@@ -267,7 +272,7 @@ begin
 end
 
 go
-alter trigger tgInsUpdDelDatChiTiet
+create trigger tgInsUpdDelDatChiTiet
 on DatChiTiet
 after insert, update, delete
 as
@@ -286,7 +291,7 @@ begin
 end
 
 go
-alter function fGetMaxSoHDX()
+create function fGetMaxSoHDX()
 returns int
 as
 begin
@@ -372,7 +377,7 @@ begin
 end
 
 go
-alter function fCheckSDT (@soDT varchar(13))
+create function fCheckSDT (@soDT varchar(13))
 returns int
 as
 begin
@@ -395,9 +400,10 @@ begin
 	end
 	return @kq
 end
+
 select dbo.fCheckSDT('084578z7483')
 go
-alter FUNCTION fuConvertToUnsign1 ( @strInput NVARCHAR(4000) ) 
+create FUNCTION fuConvertToUnsign1 ( @strInput NVARCHAR(4000) ) 
 RETURNS NVARCHAR(4000)
 AS 
 BEGIN 
@@ -455,7 +461,7 @@ begin
 end
 
 go
-alter proc spUpdateAccount @tenDN varchar(50),	@tenHT nvarchar(50), @matKhau varchar(50), @newPass varchar(50)
+create proc spUpdateAccount @tenDN varchar(50),	@tenHT nvarchar(50), @matKhau varchar(50), @newPass varchar(50)
 as
 begin
 	declare @isRightPass int = 0
@@ -475,7 +481,7 @@ begin
 end
 
 go
-alter proc spInsertXuatHD @soBan int
+create proc spInsertXuatHD @soBan int
 as
 begin
 	declare @soHDX int 
@@ -483,12 +489,13 @@ begin
 	insert into XuatHD(SoHDX, SoBan, GioVao, TinhTrang)
 	values (@soHDX ,@soBan, GETDATE(), 0)
 end
+
 select * from XuatHD
 go
-create proc spInsertXuatHDChiTiet @soHDX int, @maMon int, @soLuong int
+alter proc spInsertXuatHDChiTiet @soHDX int, @maMon int, @soLuong int
 as
 begin
-	declare @ktrMonTrongHD char(1)
+	declare @ktrMonTrongHD char(1) -- Để biết món đó đã có trong bill chưa, =1 là có, =0 là chưa
 	select @ktrMonTrongHD = COUNT(*) from XuatHDChiTiet where SoHDX = @soHDX and MaMon = @maMon 
 
 	if (@ktrMonTrongHD > 0)
@@ -508,13 +515,16 @@ begin
 	end
 	else
 	begin
-		insert into XuatHDChiTiet (SoHDX, MaMon, SoLuong)
-		values (@soHDX, @maMon, @soLuong)
+		if (@soLuong > 0)
+		begin
+			insert into XuatHDChiTiet (SoHDX, MaMon, SoLuong)
+			values (@soHDX, @maMon, @soLuong)
+		end
 	end
 end
 
 go
-alter proc spInsertMon @tenMon nvarchar(50), @donGia numeric(15,0), @tinhTrang nvarchar(50)
+create proc spInsertMon @tenMon nvarchar(50), @donGia numeric(15,0), @tinhTrang nvarchar(50)
 as
 begin
 	declare @maMon int
@@ -524,7 +534,7 @@ begin
 end
 
 go 
-alter proc spInsertHang @tenHang nvarchar(50), @donVi nvarchar(20), @donGia numeric(15,0)
+create proc spInsertHang @tenHang nvarchar(50), @donVi nvarchar(20), @donGia numeric(15,0)
 as
 begin
 	declare @maHang int
@@ -536,7 +546,7 @@ end
 select * from Hang
 
 go
-alter proc spInsertNDHang @tenNDHang nvarchar(100)
+create proc spInsertNDHang @tenNDHang nvarchar(100)
 as
 begin
 	declare @maNDHang int, @diaChi nvarchar(150)
@@ -547,7 +557,7 @@ begin
 end
 
 go
-alter proc spInsertNCC @tenNCC nvarchar(100), @diaChi nvarchar(200), @soDT varchar(13)
+create proc spInsertNCC @tenNCC nvarchar(100), @diaChi nvarchar(200), @soDT varchar(13)
 as
 begin
 	declare @maNCC int
@@ -566,10 +576,11 @@ begin
 	insert into Ban
 	values(@soBan, @tinhTrang)
 end
+
 exec spInsertBan @soBan, @tinhTrang
 
 go
-alter proc spSwitchTable @soBan1 int, @soBan2 int
+create proc spSwitchTable @soBan1 int, @soBan2 int
 as
 begin
 	declare @soHD1 int, @soHD2 int, @tinhTrangBan1 nvarchar(50), @tinhTrangBan2 nvarchar(50)
@@ -619,27 +630,34 @@ begin
 
 	if @tinhTrangBan1 = N'Có khách' and @tinhTrangBan2 = N'Có khách'  -- gộp 2 bàn có khách
 	begin
-		create table Bang (SoHDX int, MaMon int, SoLuong int, ThanhTien numeric(15,0))										-- tạo bảng trung gian
-		declare @hoaDon2 table (SoHDX int, SoBan int, GioVao time, GioRa time, NgayXuat date, TongCong numeric(15,0), TinhTrang int)
-		insert into @hoaDon2 select * from XuatHD where SoHDX = @soHD2
-		insert into Bang(MaMon, SoLuong, ThanhTien) Select MaMon, SUM(SoLuong) as soluong, SUM(ThanhTien) as thanhtien		-- ghi vào bảng trung gian 
-							from XuatHDChiTiet join XuatHD on XuatHDChiTiet.SoHDX = XuatHD.SoHDX 
-							where TinhTrang = 0
-							group by MaMon 
-		update Bang set SoHDX = @soHD2
+		-- tạo bảng trung gian
+		declare @BillInfoTG table (SoHDX int, MaMon int, SoLuong int, ThanhTien numeric(15,0))										
+		declare @Bill table (SoHDX int, SoBan int, GioVao time, GioRa time, NgayXuat date, TongCong numeric(15,0), TinhTrang int)
+		insert into @Bill(SoHDX, SoBan, GioVao, TinhTrang) select SoHDX, SoBan, GioVao, TinhTrang from XuatHD where SoHDX = @soHD2
+		-- ghi vào bảng trung gian 
+		insert into @BillInfoTG(MaMon, SoLuong, ThanhTien) Select MaMon, SoLuong, ThanhTien	from XuatHDChiTiet where SoHDX = @soHD1
+		insert into @BillInfoTG(MaMon, SoLuong, ThanhTien) Select MaMon, SoLuong, ThanhTien	from XuatHDChiTiet where SoHDX = @soHD2
+		update @BillInfoTG set SoHDX = @soHD2
+		-- xóa 2 hóa đơn cũ
 		delete XuatHDChiTiet where SoHDX = @soHD1 or SoHDX = @soHD2
-		insert into XuatHD Select * from @hoaDon2
-		insert into XuatHDChiTiet Select * from Bang
-		drop table Bang
-		delete XuatHD where SoHDX = @soHD1
+		delete XuatHD where SoHDX = @soHD1 or SoHDX = @soHD2
+		-- Chèn dữ liệu hóa đơn mới vào XuatHDChiTiet 
+		insert into XuatHD(SoHDX, SoBan, GioVao, TinhTrang) Select SoHDX, SoBan, GioVao, TinhTrang from @Bill
+		insert into XuatHDChiTiet  Select SoHDX, MaMon, SUM(SoLuong) as soluong, SUM(ThanhTien) as thanhtien
+							from @BillInfoTG 
+							group by SoHDX, MaMon
 		update Ban set TinhTrang = N'Trống' where SoBan = @soBan1 and @soBan1 != 0
 	end
 	else 
 		return
 end
 
+delete NhaCC where TenNCC = N'Ngọc Hòa' or TenNCC = N'Ngọc Hóa'
+
+Select * from NhaCC
+
 go
-alter proc spLayDATtuThoiGian @tuNgay date, @denNgay date
+create proc spLayDATtuThoiGian @tuNgay date, @denNgay date
 as
 begin
 	select MaDDH, TinhTrang, TenNDH, ThoiGian, TongTien, TenNCC  from DAT join NgDatHang on DAT.MaNDH = NgDatHang.MaNDH
@@ -650,14 +668,14 @@ end
 exec spLayDATtuThoiGian '10/01/2021' , '11/30/2021'
 
 go
-alter proc spGetListBillByDate @tuNgay date, @denNgay date
+create proc spGetListBillByDate @tuNgay date, @denNgay date
 as
 begin
 	select SoHDX, SoBan, GioVao, GioRa, NgayXuat, TongCong from XuatHD where TinhTrang = 1 and NgayXuat between @tuNgay and @denNgay
 end
 
 go
-alter proc spInsertDat @tenNDH nvarchar(100), @tenNCC nvarchar(100), @thoiGian date
+create proc spInsertDat @tenNDH nvarchar(100), @tenNCC nvarchar(100), @thoiGian date
 as
 begin
 	declare @maDDH int, @maNDH int, @maNCC int
@@ -669,7 +687,7 @@ begin
 end
 
 go
-alter proc spUpdateDat @maDDH int, @tenNDH nvarchar(100), @tenNCC nvarchar(100), @thoiGian date
+create proc spUpdateDat @maDDH int, @tenNDH nvarchar(100), @tenNCC nvarchar(100), @thoiGian date
 as
 begin
 	declare @maNDH int, @maNCC int
@@ -678,6 +696,7 @@ begin
 
 	update DAT set MaNDH = @maNDH, MaNCC = @maNCC, ThoiGian = @thoiGian where MaDDH = @maDDH
 end
+
 go
 create proc spInsertDatChiTiet @maDDH int, @maHang int, @soLuong int
 as
@@ -777,4 +796,11 @@ begin
 end
 
 exec spTimKiemNCC N'á'
+
+select TinhTrang from Ban where SoBan = 4
+
+Select TenMon, SoLuong, DonGia, ThanhTien 
+from XuatHDChiTiet join XuatHD on XuatHDChiTiet.SoHDX = XuatHD.SoHDX 
+					join Mon on XuatHDChiTiet.MaMon = Mon.MaMon 
+where Mon.TinhTrang = 0 and XuatHD.SoHDX = 1
 

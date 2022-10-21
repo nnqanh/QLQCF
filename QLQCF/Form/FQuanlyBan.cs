@@ -30,7 +30,6 @@ namespace QLQCF
             LoadMonList();
             LoadBanList();
             LoadAccount();
-            LoadTenDN();
             LoadCbBan();
             LoadCbTinhTrangMon();
             LoadDateTimePickerBill();
@@ -65,13 +64,6 @@ namespace QLQCF
             cbbTinhTrangMon.DataSource = listTTMon;
             cbbTinhTrangMon.DisplayMember = "TinhTrang";
         }
-
-        void LoadTenDN()
-        {
-            List<DTO_Account> listTenDN = DAO_Account.Instance.GetListAcc();
-            cbTenDN.DataSource = listTenDN;
-            cbTenDN.DisplayMember = "TenDN";
-        }
         void LoadListBillByDate(DateTime tuNgay, DateTime denNgay)
         {
             dtgvHoaDon.DataSource = DAO_Bill.Instance.GetBillListByDate(tuNgay, denNgay);
@@ -91,7 +83,7 @@ namespace QLQCF
         }
         void AddAccountBinding()
         {
-            cbTenDN.DataBindings.Add(new Binding("Text", dtgvTK.DataSource, "TenDN", true, DataSourceUpdateMode.Never));
+            txbTDN.DataBindings.Add(new Binding("Text", dtgvTK.DataSource, "TenDN", true, DataSourceUpdateMode.Never));
             txbTHT.DataBindings.Add(new Binding("Text", dtgvTK.DataSource, "TenHienThi", true, DataSourceUpdateMode.Never));
             nUDLoaiTK.DataBindings.Add(new Binding("Value", dtgvTK.DataSource, "Loai", true, DataSourceUpdateMode.Never));
         }
@@ -126,41 +118,62 @@ namespace QLQCF
         }
         private void btnThemMon_Click(object sender, EventArgs e)
         {
-            string tenMon = txbTenmon.Text;
-            string tinhTrang = cbbTinhTrangMon.Text;
-            float donGia = (float)nUDDongia.Value;
-
-            if (DAO_Mon.Instance.InsertMon(tenMon, donGia, tinhTrang))
+            if (txbTenmon.TextLength == 0)
             {
-                MessageBox.Show("Thêm món thành công");
-                LoadMonList();
-                if (insertMon != null)
-                    insertMon(this, new EventArgs());
+                MessageBox.Show("Không thể thêm món");
+            }
+            else if ((float)nUDDongia.Value == null)
+            {
+                MessageBox.Show("Không thể thêm món");
             }
             else
             {
-                MessageBox.Show("Có lỗi khi thêm món");
-            } 
-                
+                string tenMon = txbTenmon.Text;
+                string tinhTrang = cbbTinhTrangMon.Text;
+                float donGia = (float)nUDDongia.Value;
+
+                if (DAO_Mon.Instance.InsertMon(tenMon, donGia, tinhTrang))
+                {
+                    MessageBox.Show("Thêm món thành công");
+                    LoadMonList();
+                    if (insertMon != null)
+                        insertMon(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Không thể thêm món");
+                }
+            }   
         }
 
         private void btnSuaMon_Click(object sender, EventArgs e)
         {
-            string tenMon = txbTenmon.Text;
-            string tinhTrang = cbbTinhTrangMon.Text;
-            float donGia = (float)nUDDongia.Value;
-            int maMon = Convert.ToInt32(txbMamon.Text);
-
-            if (DAO_Mon.Instance.UpdateMon(tenMon, donGia, maMon, tinhTrang))
+            if (txbTenmon.TextLength == 0)
             {
-                MessageBox.Show("Sửa món thành công");
-                LoadMonList();
-                if (updateMon != null)
-                    updateMon(this, new EventArgs());
+                MessageBox.Show("Không thể sửa món");
+            }
+            else if ((float)nUDDongia.Value == null)
+            {
+                MessageBox.Show("Không thể sửa món");
             }
             else
             {
-                MessageBox.Show("Có lỗi khi sửa món");
+                string tenMon = txbTenmon.Text;
+                string tinhTrang = cbbTinhTrangMon.Text;
+                float donGia = (float)nUDDongia.Value;
+                int maMon = Convert.ToInt32(txbMamon.Text);
+
+                if (DAO_Mon.Instance.UpdateMon(tenMon, donGia, maMon, tinhTrang))
+                {
+                    MessageBox.Show("Sửa món thành công");
+                    LoadMonList();
+                    if (updateMon != null)
+                        updateMon(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Không thể sửa món");
+                }
             }
         }
 
@@ -392,30 +405,51 @@ namespace QLQCF
         }
         private void btnThemTK_Click(object sender, EventArgs e)
         {
-            string tenDN = cbTenDN.Text;
-            string tenHT = txbTHT.Text;
-            int loai = (int)nUDLoaiTK.Value;
-
-            AddAccount(tenDN, tenHT, loai);
+            if (txbTDN.TextLength == 0)
+            {
+                MessageBox.Show("Không thể thêm tài khoản");
+            }
+            else if (txbTHT.TextLength == 0)
+            {
+                MessageBox.Show("Không thể thêm tài khoản");
+            }
+            else
+            {
+                string tenDN = txbTDN.Text;
+                string tenHT = txbTHT.Text;
+                int loai = (int)nUDLoaiTK.Value;
+                AddAccount(tenDN, tenHT, loai);
+            }
         }
 
         private void btnSuaTK_Click(object sender, EventArgs e)
         {
-            string tenDN = cbTenDN.Text;
-            string tenHT = txbTHT.Text;
-            int loai = (int)nUDLoaiTK.Value;
+            if (txbTDN.TextLength == 0)
+            {
+                MessageBox.Show("Không thể sửa tài khoản");
+            }
+            else if (txbTHT.TextLength == 0)
+            {
+                MessageBox.Show("Không thể sửa tài khoản");
+            }
+            else
+            {
+                string tenDN = txbTDN.Text;
+                string tenHT = txbTHT.Text;
+                int loai = (int)nUDLoaiTK.Value;
 
-            UpdateAccount(tenDN, tenHT, loai);
+                UpdateAccount(tenDN, tenHT, loai);
+            }
         }
         private void btnXoaTK_Click(object sender, EventArgs e)
         {
-            string tenDN = cbTenDN.Text;
+            string tenDN = txbTDN.Text;
 
             DeleteAccount(tenDN);
         }
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
-            string tenDN = cbTenDN.Text;
+            string tenDN = txbTDN.Text;
             ResetPass(tenDN);
         }
         #endregion
@@ -456,5 +490,10 @@ namespace QLQCF
             ShowBillInfo(soHDX);
         }
         #endregion
+
+        private void nmSoBan_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
